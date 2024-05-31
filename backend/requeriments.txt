@@ -3,3 +3,4 @@ pillow
 django-cors-headers
 djangorestframework
 djangorestframework_simplejwt
+requests
