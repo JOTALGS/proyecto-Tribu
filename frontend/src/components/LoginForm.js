@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '../assets/api'
-
+import { useAuth } from '../stores/user';
 
 
 const Login = (props) => {
@@ -11,6 +11,7 @@ const Login = (props) => {
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const router = useRouter()
+  const { saveAuthTokens } = useAuth();
 
 
   const onButtonClick = async () => {
@@ -20,12 +21,10 @@ const Login = (props) => {
     }
     try {
       const response = await api.post('api/login/', JSON.stringify(body));
-      const { access, refresh } = response.data;
 
       console.log('response:', response.data)
       // Save tokens to localStorage
-      localStorage.setItem('accessToken', access);
-      localStorage.setItem('refreshToken', refresh);
+      saveAuthTokens(response.data);
 
       console.log('Login successful');
 

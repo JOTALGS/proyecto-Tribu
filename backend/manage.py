@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+"""Django's command-line utility for administrative tasks.
+    --> python3 manage.py runserver 0.0.0.0:8080
+"""
 import os
 import sys
 

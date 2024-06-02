@@ -1,10 +1,14 @@
 'use client'
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '../stores/user';
+
 
 const Navbar = () => {
   const [userName, setUserName] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const { isAuthenticated, clearAuthTokens } = useAuth();
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -26,7 +30,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-20 bg-emerald-800 sticky top-0">
+    <div className="w-full h-20 bg-green-700 sticky top-0">
       <div className="container mx-auto px-4 h-full flex justify-between items-center">
         <ul className="hidden md:flex gap-x-6 text-white">
           <li>
@@ -49,13 +53,13 @@ const Navbar = () => {
             placeholder="Search..."
             value={searchTerm}
             onChange={handleSearchChange}
-            className="px-3 py-1 rounded-md bg-emerald-800 text-white placeholder-white border-2 border-emerald-800 focus:outline-none"
+            className="px-3 py-1 mx-2 rounded-md bg-green-700 text-white placeholder-white border-2 border-green-800 focus:outline-none"
           />
         <div className="h-8 top-50% w-[1px] bg-gray-300"></div>
         </form>
 
         <div className="text-white">
-          {userName ? <p>Welcome</p> : <p>Please log in</p>}
+          {isAuthenticated ? <button onClick={clearAuthTokens}>Log out</button> : <p>Please log in</p>}
         </div>
       </div>
     </div>
