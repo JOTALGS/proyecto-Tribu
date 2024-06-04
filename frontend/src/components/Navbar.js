@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../stores/user';
+import logo from '../../public/images/logo.png';
 
 
 const Navbar = () => {
@@ -33,11 +34,11 @@ const Navbar = () => {
     <div className="w-full h-20 bg-green-700 sticky top-0">
       <div className="container mx-auto px-4 h-full flex justify-between items-center">
         <ul className="hidden md:flex gap-x-6 text-white">
-          <li>
-            <Link href="/about">
-              <p>Tribu</p>
-            </Link>
-          </li>
+        <li>
+        <Link href="/">
+            <img width={230} height={70} src="/images/logo.png" alt="Tribu logo" />
+        </Link>
+        </li>
         </ul>
   
 

@@ -1,4 +1,5 @@
 'use client'
+import Footer from '@/components/Footer'
 import OffCanvas from '@/components/OffCanvas'
 import React, { useState } from 'react'
 import ProfileInfo from '@/components/ProfileInfo'
@@ -18,6 +19,7 @@ const page = () => {
       <OffCanvas />
       <ProfileInfo tabData={handleChildData} />
       <ProfileAbout tabSelected={tabSelected}/>
+      <Footer />
     </div>
   )
 }
