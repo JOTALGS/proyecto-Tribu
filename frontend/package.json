@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^7.10.1",
+    "@mantinex/mantine-logo": "^1.0.1",
+    "@tabler/icons-react": "^3.5.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "mdb-react-ui-kit": "^8.0.0",
