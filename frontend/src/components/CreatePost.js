@@ -7,6 +7,7 @@ const PostInput = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(content);
+    console.log(content)
     setContent('');
   };
 

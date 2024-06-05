@@ -27,6 +27,7 @@ export default function ProfilePage({ tabData, user }) {
       <div className="py-3 w-full">
         <div className='w-full'>
             <div className='mx-auto flex items-center border shadow-lg' style={{ width: '70vw', height: '28vh'  }}>
+              
               <div className='border shadow-lg mr-1'  style={{ width: '45vw', height: '100%' }}>
                 <div className="m-4" style={{ display: 'flex' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
@@ -43,7 +44,7 @@ export default function ProfilePage({ tabData, user }) {
                     <p className="text-gray-500 mb-4">Bay Area, San Francisco, CA</p>
                   </div>
                 </div>
-                <div className="ml-36 my-2" style={{ width: '50%' }}>
+                <div className="ml-36 my-2" style={{ width: '45vw' }}>
                   <button
                     className={`mx-1 p-2 rounded ${
                       selectedButton === 'profile' ? 'bg-green-800' : 'bg-gray-200'

@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import Post from './Posts';
 
 const PostContainer = () => {
@@ -17,18 +17,33 @@ const PostContainer = () => {
     { id: 10, content: 'Post 10 content' },
   ];
 
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
-    <div className="overflow-y-auto mx-auto mt-4 p-4" style={{ height: '65vh', width: '50vw' }}>
-      <Post
-        profilePic="https://via.placeholder.com/200x100"
-        name="John Doe"
-        body="This is the body of the post."
-        attachment="https://via.placeholder.com/200x100"
-      />
+    <div className="overflow-y-auto mx-auto mt-4 p-4 hide-scrollbar" style={{ height: '65vh', width: '50vw' }}>
       {posts.map(post => (
-        <div key={post.id} className="p-14 border bg-white border-gray-200 mb-2 rounded-lg">
-          <p>{post.content}</p>
-        </div>
+        <Post 
+          key={post.id}
+          profilePic="https://via.placeholder.com/200x100"
+          name="John Doe"
+          body={post.content}
+          attachment="https://via.placeholder.com/200x100"
+        />
       ))}
     </div>
   );
