@@ -26,7 +26,7 @@ export default function ProfilePage({ tabData, user }) {
     <section style={{ backgroundColor: '#eee' }}>
       <div className="py-3 w-full">
         <div className='w-full'>
-            <div className='mx-auto flex items-center border shadow-lg' style={{ width: '70vw', height: '28vh'  }}>
+            <div className='mx-auto flex items-center border' style={{ width: '70vw', height: '28vh'  }}>
               
               <div className='border shadow-lg mr-1'  style={{ width: '45vw', height: '100%' }}>
                 <div className="m-4" style={{ display: 'flex' }}>

@@ -10,8 +10,8 @@ export default function ProfileAbout({bio}) {
   };
   return (
     <section style={{ backgroundColor: '#eee' }}>
-      <div className='mx-auto items-center'>
-          <div className='mx-auto px-8 py-6 bg-green-800 border shadow-lg text-white' style={{ width: '70vw'}}>
+      <div className='mx-auto items-center py-2'>
+          <div className='mx-auto px-8 py-6 bg-green-800 border text-white' style={{ width: '70vw'}}>
             <h2 className='font-bold text-lg'>About</h2>
             <div style={{
                 maxHeight: isExpanded ? `${contentRef.current.scrollHeight}px` : '5vh',

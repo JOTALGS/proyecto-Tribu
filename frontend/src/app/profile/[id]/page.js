@@ -8,10 +8,12 @@ import api from '@/assets/api'
 import PastWork from '@/components/PastWork'
 import ProfileSkills from '@/components/ProfileSkills'
 
-const page = () => {
+const page = ({params}) => {
   const [tabSelected, setTabSelected] = useState('profile');
   const [about, setAbout] = useState('');
   const [user, setUser] = useState('');
+
+  const { id } = params
 
 
   const handleChildData = (tabData) => {
@@ -22,7 +24,7 @@ const page = () => {
 
   const whenMounted = async () => {
     try {
-      const response = await api.get('api/me/');
+      const response = await api.get(`api/me/${id}`);
       setAbout(response.data.bio)
       setUser(response.data)
     } catch (error) {
@@ -36,15 +38,15 @@ const page = () => {
 
 
   return (
-    <div>
+    <div className='shadow-lg'>
       <OffCanvas />
       <ProfileInfo tabData={handleChildData} user={user}/>
       {tabSelected === 'profile' ? (
-        <>
-        <ProfileAbout bio={about}/>
-        <PastWork/>
-        <ProfileSkills/>
-        </>
+        <section>
+          <ProfileAbout bio={about}/>
+          <PastWork/>
+          <ProfileSkills/>
+        </section>
       ) : tabSelected === 'posts' ? (
         <p>Content for tab B</p>
       ) : (

@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <>
-            <Navbar /> {/* Use the Navbar component here */}
-          </>
-          {children}
+          <Navbar /> {/* Use the Navbar component here */}
+          <section>
+            {children}
+          </section>
         </AuthProvider>
       </body>
     </html>

@@ -7,7 +7,7 @@ from .models import PastWork, Skills
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'name', 'email')
+        fields = ('id', 'username', 'email')
 
 
 class PastWorkSerializer(serializers.ModelSerializer):

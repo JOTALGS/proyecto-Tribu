@@ -13,7 +13,7 @@ class Like(models.Model):
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     created_by = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='post_images')
+    image = models.ImageField(upload_to='static/post_images')
     body = models.TextField()
     likes = models.ManyToManyField(Like, blank=True)
     likes_count = models.IntegerField(default=0)
