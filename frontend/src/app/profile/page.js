@@ -6,6 +6,7 @@ import ProfileInfo from '@/components/ProfileInfo'
 import ProfileAbout from '@/components/ProfileAbout'
 import api from '@/assets/api'
 import PastWork from '@/components/PastWork'
+import ProfileSkills from '@/components/ProfileSkills'
 
 const page = () => {
   const [tabSelected, setTabSelected] = useState('profile');
@@ -41,7 +42,8 @@ const page = () => {
       {tabSelected === 'profile' ? (
         <>
         <ProfileAbout bio={about}/>
-        <PastWork />
+        <PastWork/>
+        <ProfileSkills/>
         </>
       ) : tabSelected === 'posts' ? (
         <p>Content for tab B</p>
