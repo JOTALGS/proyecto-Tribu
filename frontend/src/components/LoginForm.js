@@ -15,6 +15,7 @@ const Login = (props) => {
 
 
   const onButtonClick = async () => {
+    console.log('login clicked')
     const body = {
       "username": username,
       "password": password
@@ -31,6 +32,7 @@ const Login = (props) => {
       // Redirect to /home
       router.push('/home');
     } catch (error) {
+      console.log('error')
       console.error(error.response ? error.response.data : error.message);
     }
   }

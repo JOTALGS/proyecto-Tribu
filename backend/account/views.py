@@ -5,6 +5,7 @@ from .forms import SignupForm, ProfileForm
 from .serializers import UserSerializer
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 
 # Create your views here.
@@ -14,9 +15,11 @@ def me(request):
     """
         devuelve informacion del usuario activo
     """
+    profile = Profile.objects.get(user=request.user.id)
     return JsonResponse({
         'username': request.user.username,
         'email': request.user.email,
+        'bio': profile.bio,
     })
 
 

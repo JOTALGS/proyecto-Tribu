@@ -11,10 +11,14 @@ const api = axios.create({
 // Add a request interceptor to add the access token to the headers
 api.interceptors.request.use(
   config => {
-    const token = localStorage.getItem('accessToken');
+    var token = localStorage.getItem('accessToken');
     if (token) {
+      token = token.replace(/^"|"$/g, '');
+
       config.headers['Authorization'] = `Bearer ${token}`;
     }
+    //console.log('Headers before API call:', config.headers);
+
     return config;
   },
   error => {

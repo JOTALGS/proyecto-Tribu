@@ -10,7 +10,6 @@ const page = () => {
       <OffCanvas />
       <PostInput />
       <PostContainer />
-      <p className='mx-auto p-8'>Start editing home page!</p>
       <Footer />
     </div>
   )

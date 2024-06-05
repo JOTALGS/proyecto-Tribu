@@ -1,27 +1,16 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
   MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import { Button } from 'react-bootstrap';
+import api from '../assets/api';
 
-export default function ProfilePage({ tabData }) {
-  const [selectedButton, setSelectedButton] = useState(null);
+export default function ProfilePage({ tabData, user }) {
+  const [selectedButton, setSelectedButton] = useState('profile');
   const [selectedButton2, setSelectedButton2] = useState(null);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
@@ -32,13 +21,13 @@ export default function ProfilePage({ tabData }) {
     tabData(buttonName)
   };
 
+
   return (
     <section style={{ backgroundColor: '#eee' }}>
-      <MDBContainer className="py-5">
-        <MDBRow>
-          <div lg="4">
-            <div className='mx-auto flex items-center border shadow-lg' style={{ width: '80vw', height: '26vh'  }}>
-              <div className='border shadow-lg mr-1' style={{ width: '45vw' }}>
+      <div className="py-3 w-full">
+        <div className='w-full'>
+            <div className='mx-auto flex items-center border shadow-lg' style={{ width: '70vw', height: '28vh'  }}>
+              <div className='border shadow-lg mr-1'  style={{ width: '45vw', height: '100%' }}>
                 <div className="m-4" style={{ display: 'flex' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
                     <MDBCardImage
@@ -49,6 +38,7 @@ export default function ProfilePage({ tabData }) {
                       fluid />
                   </div>
                   <div style={{ flex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem' }}>
+                    <p>{user.username}</p>
                     <p className="text-gray-500 mb-1">Full Stack Developer</p>
                     <p className="text-gray-500 mb-4">Bay Area, San Francisco, CA</p>
                   </div>
@@ -94,9 +84,8 @@ export default function ProfilePage({ tabData }) {
                 </div>
               </div>
             </div>
-          </div>
-        </MDBRow>
-      </MDBContainer>
+        </div>
+      </div>
     </section>
   );
 }

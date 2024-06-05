@@ -1,12 +1,17 @@
 'use client'
 import Footer from '@/components/Footer'
 import OffCanvas from '@/components/OffCanvas'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileInfo from '@/components/ProfileInfo'
 import ProfileAbout from '@/components/ProfileAbout'
+import api from '@/assets/api'
+import PastWork from '@/components/PastWork'
 
 const page = () => {
   const [tabSelected, setTabSelected] = useState('profile');
+  const [about, setAbout] = useState('');
+  const [user, setUser] = useState('');
+
 
   const handleChildData = (tabData) => {
     // Do something with the data received from the child component
@@ -14,11 +19,35 @@ const page = () => {
     setTabSelected(tabData);
   };
 
+  const whenMounted = async () => {
+    try {
+      const response = await api.get('api/me/');
+      setAbout(response.data.bio)
+      setUser(response.data)
+    } catch (error) {
+      console.error(error.response ? error.response.data : error.message);
+    }
+  }
+
+  useEffect(() => {
+    whenMounted();
+  }, []);
+
+
   return (
     <div>
       <OffCanvas />
-      <ProfileInfo tabData={handleChildData} />
-      <ProfileAbout tabSelected={tabSelected}/>
+      <ProfileInfo tabData={handleChildData} user={user}/>
+      {tabSelected === 'profile' ? (
+        <>
+        <ProfileAbout bio={about}/>
+        <PastWork />
+        </>
+      ) : tabSelected === 'posts' ? (
+        <p>Content for tab B</p>
+      ) : (
+        <p>Default Content</p>
+      )}
       <Footer />
     </div>
   )

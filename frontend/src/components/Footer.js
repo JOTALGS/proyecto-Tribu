@@ -1,18 +1,20 @@
 'use client';
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
+import logo from '../../public/images/logo.png';
+
 
 const Footer = () => {
   return (
     <MDBFooter className='footer-custom text-center text-lg-start text-muted'>
-      <MDBContainer fluid className='p-4'>
+      <MDBContainer fluid className='bg-green-700'>
         <MDBRow>
-          <MDBCol className='mb-4' md='6' lg='3'>
-            <h6 className='text-uppercase fw-bold'>TRIBU</h6>
+          <MDBCol className='mb-4'>
+            <img width={200} height={150} src="/images/logo.png" alt="Tribu logo"/>
             <p>Our aim is to inspire and connect.</p>
           </MDBCol>
 
-          <MDBCol className='mb-4' md='6' lg='3'>
+          <MDBCol className='p-4' md='6' lg='3'>
             <div>
               <h6 className='text-uppercase fw-bold'>Products</h6>
               <ul className='list-unstyled mb-0'>
@@ -24,7 +26,7 @@ const Footer = () => {
             </div>
           </MDBCol>
 
-          <MDBCol className='mb-4' md='6' lg='3'>
+          <MDBCol className='mb-4 p-4' md='6' lg='3'>
             <div>
               <h6 className='text-uppercase fw-bold'>Useful links</h6>
               <ul className='list-unstyled mb-0'>
@@ -36,7 +38,7 @@ const Footer = () => {
             </div>
           </MDBCol>
 
-          <MDBCol className='mb-4' md='6' lg='3'>
+          <MDBCol className='p-4' md='6' lg='3'>
             <div>
               <h6 className='text-uppercase fw-bold'>Contact</h6>
               <ul className='list-unstyled mb-0'>
@@ -50,7 +52,7 @@ const Footer = () => {
         </MDBRow>
       </MDBContainer>
 
-      <div className='text-center p-2' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+      <div className='text-center p-2 bg-green-800'>
         © 2024 Derechos Reservados:
         <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
           Tribu
