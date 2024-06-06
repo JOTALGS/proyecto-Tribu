@@ -17,9 +17,9 @@ class ProfileSkills extends React.Component {
         <div className="py-3 w-full">
           <div className="w-full">
             <div className="mx-auto flex items-center border shadow-lg" style={{ width: '70vw', height: '40vh' }}>
-              {/* Contenedor padre */}
+              {/* contenedor padre */}
               <div className="w-full h-full">
-                {/* Div verde que ocupa todo el espacio */}
+                {/* ddiv verde que ocupa todo el espacio */}
                 <div className="bg-green-800 text-white p-6 w-full h-full">
                   <h2 className="font-bold text-lg">Competencias y habilidades</h2>
                   <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -53,7 +53,7 @@ class ProfileSkills extends React.Component {
                     </div>
                   </div>
                 </div>
-                {/* Fin de la div verde */}
+                {/* fin de la div verde */}
               </div>
             </div>
           </div>
