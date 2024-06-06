@@ -26,6 +26,7 @@ export default function ProfilePage({ tabData, user }) {
         />
       </Head>
       <div className="py-3 w-full">
+<<<<<<< HEAD
         <div className="w-full">
           <div className="mx-auto flex items-center border shadow-lg" style={{ width: '70vw', height: '28vh' }}>
             <div className="border shadow-lg mr-1" style={{ width: '45vw', height: '100%' }}>
@@ -38,6 +39,26 @@ export default function ProfilePage({ tabData, user }) {
                     style={{ width: '150px', borderRadius: '50%' }}
                     fluid
                   />
+=======
+        <div className='w-full'>
+            <div className='mx-auto flex items-center border' style={{ width: '70vw', height: '28vh'  }}>
+              
+              <div className='border shadow-lg mr-1'  style={{ width: '45vw', height: '100%' }}>
+                <div className="m-4" style={{ display: 'flex' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                    <MDBCardImage
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                      alt="avatar"
+                      className="mx-auto"
+                      style={{ width: '150px', borderRadius: '50%' }}
+                      fluid />
+                  </div>
+                  <div style={{ flex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem' }}>
+                    <p>{user.username}</p>
+                    <p className="text-gray-500 mb-1">Full Stack Developer</p>
+                    <p className="text-gray-500 mb-4">Bay Area, San Francisco, CA</p>
+                  </div>
+>>>>>>> 2e10720886f4477b4df2ac5db1832ac61a7dffe1
                 </div>
                 <div style={{ flex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem' }}>
                   <p>{user.username}</p>

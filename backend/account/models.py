@@ -21,7 +21,7 @@ class Profile(models.Model):
 class PastWork(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='past_works')
-    image = models.ImageField(upload_to='past_work_images/')
+    image = models.ImageField(upload_to='static/past_work_images/')
     title = models.CharField(max_length=255)
     info = models.TextField()
     date = models.DateField()
@@ -33,7 +33,7 @@ class PastWork(models.Model):
 class Skills(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='skills')
-    image = models.ImageField(upload_to='skills_images/')
+    image = models.ImageField(upload_to='static/skills_images/')
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255)
     date = models.DateField(null=True, blank=True)  # Optional date field
