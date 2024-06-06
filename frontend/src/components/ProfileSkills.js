@@ -1,6 +1,8 @@
 'use client'
 import React from 'react';
 import Head from 'next/head';
+import '../styles/flexbox-styles.css'
+
 
 class ProfileSkills extends React.Component {
   render() {
