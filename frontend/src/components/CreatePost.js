@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 
+
 const PostInput = ({ onSubmit }) => {
   const [content, setContent] = useState('');
 

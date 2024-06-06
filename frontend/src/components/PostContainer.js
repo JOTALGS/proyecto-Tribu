@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import Post from './Posts';
 
+
 const PostContainer = () => {
   // Hardcoded posts for demonstration
   const posts = [
