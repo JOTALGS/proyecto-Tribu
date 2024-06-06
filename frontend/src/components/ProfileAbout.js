@@ -1,5 +1,7 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 export default function ProfileAbout({ bio }) {
   const [isExpanded, setIsExpanded] = useState(false);

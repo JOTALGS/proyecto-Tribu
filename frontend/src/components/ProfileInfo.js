@@ -1,15 +1,21 @@
-'use client'
 import React, { useState } from 'react';
 import { MDBCardImage } from 'mdb-react-ui-kit';
+import MyWork from './MyWork'; 
 
 
 export default function ProfilePage({ tabData, user }) {
   const [selectedButton, setSelectedButton] = useState('profile');
   const [selectedButton2, setSelectedButton2] = useState(null);
+  const [showMyWorkContent, setShowMyWorkContent] = useState(false); 
 
   const handleButtonClick = (buttonName) => {
     setSelectedButton(buttonName);
     tabData(buttonName);
+
+    // Establece showMyWorkContent en false si se hace clic en el botón de perfil
+    if (buttonName === 'profile') {
+      setShowMyWorkContent(false);
+    }
   };
 
   const handleButtonClick2 = (buttonName) => {
@@ -17,9 +23,12 @@ export default function ProfilePage({ tabData, user }) {
     tabData(buttonName);
   };
 
+  const handleMyWorkButtonClick = () => {
+    setShowMyWorkContent(true);
+  };
+
   return (
     <section style={{ backgroundColor: '#eee', fontFamily: 'Poppins, Open Sans, sans-serif' }}>
-
       <div className="py-3 w-full">
         <div className="w-full">
           <div className="mx-auto flex items-center border shadow-lg" style={{ width: '70vw', height: '28vh' }}>
@@ -36,8 +45,8 @@ export default function ProfilePage({ tabData, user }) {
                 </div>
                 <div style={{ flex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem' }}>
                   <p>{user.username}</p>
-                  <p className="text-gray-500 mb-1">Full Stack Developer</p>
-                  <p className="text-gray-500 mb-4">Bay Area, San Francisco, CA</p>
+                  <p className="text-gray-500 mb-1">Productor músical</p>
+                  <p className="text-gray-500 mb-4">Montevideo, UY</p>
                 </div>
               </div>
               <div className="ml-36 my-2" style={{ width: '45vw' }}>
@@ -45,13 +54,17 @@ export default function ProfilePage({ tabData, user }) {
                   className={`mx-1 p-2 rounded ${selectedButton === 'profile' ? 'bg-green-800 text-white' : 'bg-gray-200'}`}
                   onClick={() => handleButtonClick('profile')}
                 >
-                  Perfil
+                  Profile
                 </button>
+                {/* Botón para mostrar el contenido de "My Work" */}
                 <button
                   className={`mx-1 p-2 rounded ${selectedButton === 'posts' ? 'bg-green-800 text-white' : 'bg-gray-200'}`}
-                  onClick={() => handleButtonClick('posts')}
+                  onClick={() => {
+                    handleButtonClick('posts');
+                    handleMyWorkButtonClick(); // Llama al manejador de eventos para mostrar el contenido de "My Work"
+                  }}
                 >
-                  Mis Posteos
+                  My work
                 </button>
               </div>
             </div>
@@ -75,6 +88,10 @@ export default function ProfilePage({ tabData, user }) {
           </div>
         </div>
       </div>
+
+      {/* Muestra el contenido de "My Work" si showMyWorkContent es true */}
+      {showMyWorkContent && <MyWork />}
+      
     </section>
   );
 }

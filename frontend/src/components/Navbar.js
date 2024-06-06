@@ -4,12 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../stores/user';
 import logo from '../../public/images/logo.png';
 
-
 const Navbar = () => {
   const [userName, setUserName] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const { isAuthenticated, clearAuthTokens } = useAuth();
-
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,10 +29,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-20 bg-green-700 sticky top-0 z-50">
+    <div className="w-full h-20 bg-green-700 sticky top-0" style={{ borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
       <div className="px-1 h-full w-full flex items-center">
         <div className="flex-start text-white">
-          <img width={230} height={70} src="/images/logo.png" alt="Tribu logo" style={{ width: '15vw'}}/>
+          <img width={230} height={70} src="/images/logo.png" alt="Tribu logo" style={{ width: '15vw' }}/>
         </div>
   
         <div className="flex flex-center mx-auto justify-center items-center">
