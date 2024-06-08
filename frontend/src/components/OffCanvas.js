@@ -15,7 +15,7 @@ function OffCanvas() {
 
   return (
     <div className="relative">
-      <div className="fixed top-20 inset-0 bg-gray-100 bg-opacity-80 z-50" style={{ width: '14vw' }}>
+      <div className="fixed top-20 inset-0 bg-white bg-opacity-80 z-50" style={{ width: '14vw', maxHeight: '14vw', overflowY: 'auto' }}>
         <Navigation
           activeItemId={activeItem}
           onSelect={handleSelect}
@@ -30,8 +30,13 @@ function OffCanvas() {
               itemId: '/profile',
               elemId: 'profileNav',
             },
+            {
+              title: 'Settings',
+              itemId: '/settings',
+              elemId: 'settingsNav',
+            },
           ]}
-          onItemClick={({ itemId }) => setActiveItem(itemId)} // Set active item directly on click
+          onItemClick={({ itemId }) => setActiveItem(itemId)} 
           overrides={{
             Item: {
               component: (props) => (
@@ -40,6 +45,19 @@ function OffCanvas() {
                   style={{
                     ...props.style,
                     backgroundColor: props.itemId === activeItem ? '#34D399' : 'transparent',
+                    color: props.itemId === activeItem ? '#FFFFFF' : '#000000', // Change text color based on active item
+                  }}
+                />
+              ),
+            },
+            Root: {
+              component: (props) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    backgroundColor: props.active ? '#34D399' : 'transparent',
+                    color: props.active ? '#FFFFFF' : '#000000', // Change text color based on active item
                   }}
                 />
               ),
