@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react'
 import ProfileInfo from '@/components/ProfileInfo'
 import ProfileAbout from '@/components/ProfileAbout'
 import api from '@/assets/api'
-import PastWork from '@/components/PastWork'
 import ProfileSkills from '@/components/ProfileSkills'
+
 
 const page = ({params}) => {
   const [tabSelected, setTabSelected] = useState('profile');
@@ -44,7 +44,6 @@ const page = ({params}) => {
       {tabSelected === 'profile' ? (
         <section>
           <ProfileAbout bio={about}/>
-          <PastWork/>
           <ProfileSkills/>
         </section>
       ) : tabSelected === 'posts' ? (
