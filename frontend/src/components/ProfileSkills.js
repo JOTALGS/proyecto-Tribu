@@ -1,4 +1,3 @@
-'use client'
 import React, { useState } from 'react';
 
 class ProfileSkills extends React.Component {
@@ -17,54 +16,25 @@ class ProfileSkills extends React.Component {
   render() {
     const { isExpanded } = this.state;
     return (
-      <section style={{ backgroundColor: '#eee', fontFamily: 'Poppins, Open Sans, sans-serif' }}>
-        <div className="py-3 w-full">
-          <div className="w-full">
-            <div className="mx-auto flex items-center border shadow-lg" style={{ width: '70vw', height: '40vh' }}>
-              {/* contenedor padre */}
-              <div className="w-full h-full">
-                {/* div verde que ocupa todo el espacio */}
-                <div className="bg-green-800 text-white p-6 w-full h-full">
-                  <h2 className="font-bold text-lg">Competencias y habilidades</h2>
-                  <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                    <div
-                      className="placeholder"
-                      style={{
-                        width: '100px',
-                        height: '100px',
-                        backgroundColor: 'lightgray',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <img src="/imagen1.jpg" alt="Imagen 1" style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '50%' }} />
-                    </div>
-                    <div
-                      className="placeholder"
-                      style={{
-                        width: '100px',
-                        height: '100px',
-                        backgroundColor: 'lightgray',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <img src="/imagen2.jpg" alt="Imagen 2" style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '50%' }} />
-                    </div>
-                  </div>
-                  <button
-                    onClick={this.handleToggle}
-                    className="font-bold mt-1 p-2 bg-transparent hover:bg-white hover:bg-opacity-25 transition-colors duration-300"
-                  >
-                    {isExpanded ? 'See less' : 'See more'}
-                  </button>
+      <section className="bg-white py-8" style={{ fontFamily: 'Poppins, Open Sans, sans-serif' }}>
+        <div className="container mx-auto">
+          <div className="mx-auto flex items-center border" style={{ maxWidth: '70vw', height: '40vh' }}>
+            <div className="w-full h-full bg-white text-white p-6">
+              <h2 className="font-bold text-lg text-black">Skills</h2>
+              <div className="flex justify-around">
+                <div className="placeholder rounded-full w-24 h-24 bg-gray-300 flex justify-center items-center">
+                  <img src="/imagen1.jpg" alt="Imagen 1" className="max-w-full max-h-full rounded-full" />
                 </div>
-                {/* fin de la div verde */}
+                <div className="placeholder rounded-full w-24 h-24 bg-gray-300 flex justify-center items-center">
+                  <img src="/imagen2.jpg" alt="Imagen 2" className="max-w-full max-h-full rounded-full" />
+                </div>
               </div>
+              <button
+                onClick={this.handleToggle}
+                className="font-bold mt-4 p-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300"
+              >
+                {isExpanded ? 'See less' : 'See more'}
+              </button>
             </div>
           </div>
         </div>

@@ -1,7 +1,4 @@
-'use client'
 import React, { useRef, useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 
 export default function ProfileAbout({ bio }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -21,10 +18,10 @@ export default function ProfileAbout({ bio }) {
   };
 
   return (
-    <section style={{ backgroundColor: '#eee' }}>
-      <div className='mx-auto items-center'>
-        <div className='mx-auto px-8 py-6 bg-green-800 border shadow-lg text-white' style={{ width: '70vw' }}>
-          <h2 className='font-bold text-lg'>About</h2>
+    <section className="bg-white py-8">
+      <div className="container mx-auto">
+        <div className="mx-auto px-8 py-6 bg-white border text-black" style={{ maxWidth: '70vw' }}>
+          <h2 className="font-bold text-lg">About</h2>
           <div
             style={{
               maxHeight: maxHeight,
@@ -35,7 +32,10 @@ export default function ProfileAbout({ bio }) {
           >
             <p>{bio}</p>
           </div>
-          <button onClick={handleToggle} className='font-bold mt-1 p-2 bg-transparent hover:bg-white hover:bg-opacity-25 transition-colors duration-300'>
+          <button 
+            onClick={handleToggle} 
+            className="font-bold mt-4 p-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300"
+          >
             {isExpanded ? 'See less' : 'See more'}
           </button>
         </div>

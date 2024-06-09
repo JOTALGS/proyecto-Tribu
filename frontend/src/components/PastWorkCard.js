@@ -1,7 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-
 function PastWorkCard() {
   return (
     <Card style={{ width: '18rem' }}>
@@ -11,7 +10,7 @@ function PastWorkCard() {
         <Card.Text>
           Card description
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="success" className="bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300">Go somewhere</Button>
       </Card.Body>
     </Card>
   );
