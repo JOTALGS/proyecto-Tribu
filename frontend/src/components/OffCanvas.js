@@ -23,8 +23,8 @@ function OffCanvas({id}) {
   };
 
   return (
-    <div className="relative">
-      <div className="fixed top-20 inset-0 z-50" style={{ width: '14vw', maxHeight: '7vw', background: 'linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8))' }}>
+    <div className="">
+      <div className="z-50" style={{ width: '20vw', maxHeight: '7vw', background: 'linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8))' }}>
         <div style={{ 
           borderBottom: '1px solid rgba(255, 255, 255, 0.5)',
           borderTop: '1px solid rgba(255, 255, 255, 0.5)',

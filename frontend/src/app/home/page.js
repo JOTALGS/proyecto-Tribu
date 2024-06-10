@@ -32,13 +32,15 @@ const Page = () => {
 
   return (
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}> 
-      <OffCanvas id="5" />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', minHeight: '100%' }}>
-        <div style={{ padding: '20px', maxWidth: 'calc(100% - 700px)', margin: '0 auto' }}>
+      <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
+        <div style={{ flex: '1' }}>
+          <OffCanvas id="5" />
+        </div>
+        <div className='mx-auto' style={{ flex: '3', padding: '10px', maxWidth: 'calc(100% - 700px)' }}>
           <PostInput onSubmit={handleChildData} />
           <PostContainer />
         </div>
-        <div style={{ width: '700px', padding: '20px' }}>
+        <div style={{ flex: '1', width: '700px', padding: '20px' }}>
           <App />
         </div>
       </div>

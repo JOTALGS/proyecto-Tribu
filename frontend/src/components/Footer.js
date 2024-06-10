@@ -50,9 +50,8 @@ const Footer = () => {
       </MDBContainer>
 
       <div className='text-center p-2 bg-green-700'>
-        © 2024 Todos los Derechos Reservados
+        © 2024 TRIBU. Todos los Derechos Reservados
         <a className='text-reset fw-bold' href='/home'>
-          Tribu
         </a>
       </div>
     </MDBFooter>
