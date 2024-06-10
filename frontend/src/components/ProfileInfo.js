@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { MDBCardImage } from 'mdb-react-ui-kit';
-import MyWork from './MyWork';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLink } from '@fortawesome/free-solid-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -99,10 +98,6 @@ export default function ProfilePage({ tabData, user }) {
           </div>
         </div>
       </div>
-
-      {/* Show my work i f showMyWorkContent is true */}
-      {showMyWorkContent && <MyWork />}
-      
     </section>
   );
 }

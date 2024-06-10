@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 
-function OffCanvas() {
+function OffCanvas({id}) {
   const router = useRouter();
   const [activeItem, setActiveItem] = useState('/home');
 
@@ -14,13 +14,17 @@ function OffCanvas() {
   }, []);
 
   const handleSelect = ({ itemId }) => {
-    router.push(itemId);
+    if (itemId === '/profile') {
+      router.push(`/profile/${id}`);
+    } else {
+      router.push(itemId);
+    }
     setActiveItem(itemId);
   };
 
   return (
-    <div className="relative">
-      <div className="fixed top-20 inset-0 z-50" style={{ width: '14vw', maxHeight: '7vw', background: 'linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8))' }}>
+    <div className="">
+      <div className="z-50" style={{ width: '20vw', maxHeight: '7vw', background: 'linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8))' }}>
         <div style={{ 
           borderBottom: '1px solid rgba(255, 255, 255, 0.5)',
           borderTop: '1px solid rgba(255, 255, 255, 0.5)',

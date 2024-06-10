@@ -6,6 +6,7 @@ import ProfileInfo from '@/components/ProfileInfo'
 import ProfileAbout from '@/components/ProfileAbout'
 import api from '@/assets/api'
 import ProfileSkills from '@/components/ProfileSkills'
+import MyWork from '@/components/MyWork'
 
 
 const page = ({params}) => {
@@ -27,6 +28,7 @@ const page = ({params}) => {
       const response = await api.get(`api/me/${id}`);
       setAbout(response.data.bio)
       setUser(response.data)
+      console.log('user', response.data)
     } catch (error) {
       console.error(error.response ? error.response.data : error.message);
     }
@@ -39,18 +41,24 @@ const page = ({params}) => {
 
   return (
     <div className='shadow-lg'>
-      <OffCanvas />
-      <ProfileInfo tabData={handleChildData} user={user}/>
-      {tabSelected === 'profile' ? (
-        <section>
-          <ProfileAbout bio={about}/>
-          <ProfileSkills/>
-        </section>
-      ) : tabSelected === 'posts' ? (
-        <p>Content for tab B</p>
-      ) : (
-        <p>Default Content</p>
-      )}
+      <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
+        <div style={{ flex: '1' }}>
+          <OffCanvas id={user.user_id} />
+        </div>
+        <div style={{ flex: '10' }}>
+          <ProfileInfo tabData={handleChildData} user={user}/>
+          {tabSelected === 'profile' ? (
+            <section>
+              <ProfileAbout bio={about}/>
+              <ProfileSkills/>
+            </section>
+          ) : tabSelected === 'posts' ? (
+            <MyWork/>
+          ) : (
+            <p>Default Content</p>
+          )}
+        </div>
+      </div>
       <Footer />
     </div>
   )

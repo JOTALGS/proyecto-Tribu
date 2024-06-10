@@ -1,141 +1,76 @@
 'use client'
-import React from 'react';
-import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
-
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
 function App() {
-  return (
-    <div>
-      <style jsx>{`
-        body {
-          margin: 0;
-          font-family: Roboto, Helvetica, Arial, sans-serif;
-          -webkit-font-smoothing: antialiased;
-        }
+  const [userData, setUserData] = useState([]);
 
-        code {
-          font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/suggestions/')
+      .then(response => {
+        console.log('response suggestions', response.data.usersData)
+        setUserData(response.data.usersData);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
+      const style = document.createElement('style');
+      style.innerHTML = `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
         }
-      `}</style>
-      <MDBContainer fluid>
-        <section>
-          <div className='shadow-4 rounded-5 overflow-hidden'>
-            <MDBTable>
-              <MDBTableHead light>
-                <tr>
-                  <th style={{ fontSize: '1.0em', fontWeight: 'bold' }}>PEOPLE YOU MAY KNOW</th>
-                  <th>Role</th>
-                  <th style={{ textAlign: 'center' }}>Add Contacts</th>
-                </tr>
-              </MDBTableHead>
-              <MDBTableBody style={{ verticalAlign: 'middle' }}>
-                <tr>
-                  <td>
+        .hide-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+      `;
+      document.head.appendChild(style);
+      return () => {
+        document.head.removeChild(style);
+      };
+  }, []);
+
+  return (
+    <MDBContainer className='' fluid>
+      <section>
+        <MDBTable>
+            <MDBTableHead light>
+              <tr>
+                <th className="align-middle">Work with</th>
+                <th className="align-middle">Role</th>
+              </tr>
+            </MDBTableHead>
+        <div className='shadow-8 rounded-4 overflow-hidden ml-auto overflow-y-auto hide-scrollbar' style={{height: '80vh', width: '95%', marginRight: '0px' }}>
+            <MDBTableBody>
+              {userData.map((user, index) => (
+                <tr key={index}>
+                  <td className="align-middle">
                     <div className='d-flex align-items-center'>
                       <img
-                        src='https://mdbootstrap.com/img/new/avatars/8.jpg'
+                        src={user.avatar}
                         alt=''
                         style={{ width: '45px', height: '45px' }}
                         className='rounded-circle'
                       />
                       <div className='ms-3'>
-                        <p className='fw-bold mb-1'>John Doe</p>
-                        <p className='text-muted mb-0'>john.doe@gmail.com</p>
+                        <p className='fw-bold mb-1'>{user.username}</p>
+                        <p className='text-muted mb-0'>{user.email}</p>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <p className='fw-normal mb-1'>Musician</p>
-                    <p className='text-muted mb-0'>Bass</p>
-                  </td>
-                  <td style={{ textAlign: 'center' }}>
-                    <MDBBtn className='fw-bold' color='link' rounded size='sm' rippleColor='dark'>
-                      Add Contact
-                    </MDBBtn>
+                  <td className="align-middle">
+                    <p className='fw-normal mb-1'>{user.role}</p>
+                    <p className='text-muted mb-0'>{user.category}</p>
                   </td>
                 </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <img
-                        src='https://mdbootstrap.com/img/new/avatars/6.jpg'
-                        className='rounded-circle'
-                        alt=''
-                        style={{ width: '45px', height: '45px' }}
-                      />
-                      <div className='ms-3'>
-                        <p className='fw-bold mb-1'>Alex Ray</p>
-                        <p className='text-muted mb-0'>alex.ray@gmail.com</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p className='fw-normal mb-1'>Producer</p>
-                    <p className='text-muted mb-0'>Techno</p>
-                  </td>
-                  <td style={{ textAlign: 'center' }}>
-                    <MDBBtn className='fw-bold' color='link' rounded size='sm' rippleColor='dark'>
-                      Add Contact
-                    </MDBBtn>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <img
-                        src='https://mdbootstrap.com/img/new/avatars/7.jpg'
-                        className='rounded-circle'
-                        alt=''
-                        style={{ width: '45px', height: '45px' }}
-                      />
-                      <div className='ms-3'>
-                        <p className='fw-bold mb-1'>Kate Hunington</p>
-                        <p className='text-muted mb-0'>kate.hunington@gmail.com</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p className='fw-normal mb-1'>Producer</p>
-                    <p className='text-muted mb-0'>Beats</p>
-                  </td>
-                  <td style={{ textAlign: 'center' }}>
-                    <MDBBtn className='fw-bold' color='link' rounded size='sm' rippleColor='dark'>
-                      Add Contact
-                    </MDBBtn>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <img
-                        src='https://mdbootstrap.com/img/new/avatars/9.jpg'
-                        className='rounded-circle'
-                        alt=''
-                        style={{ width: '45px', height: '45px' }}
-                      />
-                      <div className='ms-3'>
-                        <p className='fw-bold mb-1'>Karen Smith</p>
-                        <p className='text-muted mb-0'>karen.smith@gmail.com</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p className='fw-normal mb-1'>Musician</p>
-                    <p className='text-muted mb-0'>Drums</p>
-                  </td>
-                  <td style={{ textAlign: 'center' }}>
-                    <MDBBtn className='fw-bold' color='link' rounded size='sm' rippleColor='dark'>
-                      Add Contact
-                    </MDBBtn>
-                  </td>
-                </tr>
-              </MDBTableBody>
-            </MDBTable>
-          </div>
-        </section>
-      </MDBContainer>
-    </div>
+              ))}
+            </MDBTableBody>
+        </div>
+          </MDBTable>
+      </section>
+    </MDBContainer>
   );
 }
 
