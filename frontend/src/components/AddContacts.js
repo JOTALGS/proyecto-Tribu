@@ -15,19 +15,34 @@ function App() {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+
+      const style = document.createElement('style');
+      style.innerHTML = `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+      `;
+      document.head.appendChild(style);
+      return () => {
+        document.head.removeChild(style);
+      };
   }, []);
 
   return (
     <MDBContainer className='' fluid>
       <section>
-        <div className='shadow-8 rounded-4 overflow-hidden ml-auto overflow-y-auto' style={{height: '80vh', width: '95%', marginRight: '-15px' }}>
-          <MDBTable>
+        <MDBTable>
             <MDBTableHead light>
               <tr>
                 <th className="align-middle">Work with</th>
                 <th className="align-middle">Role</th>
               </tr>
             </MDBTableHead>
+        <div className='shadow-8 rounded-4 overflow-hidden ml-auto overflow-y-auto hide-scrollbar' style={{height: '80vh', width: '95%', marginRight: '0px' }}>
             <MDBTableBody>
               {userData.map((user, index) => (
                 <tr key={index}>
@@ -52,8 +67,8 @@ function App() {
                 </tr>
               ))}
             </MDBTableBody>
-          </MDBTable>
         </div>
+          </MDBTable>
       </section>
     </MDBContainer>
   );
