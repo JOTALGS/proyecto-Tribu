@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Navigation } from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 
-function OffCanvas() {
+function OffCanvas({id}) {
   const router = useRouter();
   const [activeItem, setActiveItem] = useState('/home');
 
@@ -14,7 +14,11 @@ function OffCanvas() {
   }, []);
 
   const handleSelect = ({ itemId }) => {
-    router.push(itemId);
+    if (itemId === '/profile') {
+      router.push(`/profile/${id}`);
+    } else {
+      router.push(itemId);
+    }
     setActiveItem(itemId);
   };
 

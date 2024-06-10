@@ -32,7 +32,7 @@ const Page = () => {
 
   return (
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}> 
-      <OffCanvas />
+      <OffCanvas id="5" />
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', minHeight: '100%' }}>
         <div style={{ padding: '20px', maxWidth: 'calc(100% - 700px)', margin: '0 auto' }}>
           <PostInput onSubmit={handleChildData} />

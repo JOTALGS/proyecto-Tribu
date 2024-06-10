@@ -18,15 +18,15 @@ function App() {
           font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
         }
       `}</style>
-      <MDBContainer fluid>
+      <MDBContainer className='' fluid>
         <section>
-          <div className='shadow-4 rounded-5 overflow-hidden'>
+          <div className='shadow-8 rounded-4 overflow-hidden ml-auto'  style={{ width: '25vw', height: '60vh' }}>
             <MDBTable>
               <MDBTableHead light>
                 <tr>
-                  <th style={{ fontSize: '1.0em', fontWeight: 'bold' }}>PEOPLE YOU MAY KNOW</th>
+                  <th style={{ fontSize: '1.2em', fontWeight: 'bold' }}>You could work with</th>
                   <th>Role</th>
-                  <th style={{ textAlign: 'center' }}>Add Contacts</th>
+                  <th style={{ textAlign: 'center' }}>Add to feed</th>
                 </tr>
               </MDBTableHead>
               <MDBTableBody style={{ verticalAlign: 'middle' }}>

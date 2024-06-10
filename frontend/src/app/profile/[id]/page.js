@@ -27,6 +27,7 @@ const page = ({params}) => {
       const response = await api.get(`api/me/${id}`);
       setAbout(response.data.bio)
       setUser(response.data)
+      console.log('user', response.data)
     } catch (error) {
       console.error(error.response ? error.response.data : error.message);
     }
@@ -39,7 +40,7 @@ const page = ({params}) => {
 
   return (
     <div className='shadow-lg'>
-      <OffCanvas />
+      <OffCanvas id={user.user_id} />
       <ProfileInfo tabData={handleChildData} user={user}/>
       {tabSelected === 'profile' ? (
         <section>
