@@ -1,59 +1,61 @@
-import React from 'react';
-import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
+'use client'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
 function App() {
-  return (
-    <div>
-      <style jsx>{`
-        body {
-          margin: 0;
-          font-family: Roboto, Helvetica, Arial, sans-serif;
-          -webkit-font-smoothing: antialiased;
-        }
+  const [userData, setUserData] = useState([]);
 
-        code {
-          font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-        }
-      `}</style>
-      <MDBContainer className='' fluid>
-        <section>
-          <div className='shadow-8 rounded-4 overflow-hidden ml-auto'  style={{ width: '85%', maxWidth: '350px', height: '30vh' }}>
-            <MDBTable>
-              <MDBTableHead light>
-                <tr>
-                  <th>Work with</th>
-                  <th>Role</th>
-                </tr>
-              </MDBTableHead>
-              <MDBTableBody style={{ verticalAlign: 'middle' }}>
-                <tr>
-                  <td>
-                    <a href='/profile' style={{ textDecoration: 'none', color: 'inherit' }}>
-                      <div className='d-flex align-items-center'>
-                        <img
-                          src='https://mdbootstrap.com/img/new/avatars/8.jpg'
-                          alt=''
-                          style={{ width: '45px', height: '45px' }}
-                          className='rounded-circle'
-                        />
-                        <div className='ms-3'>
-                          <p className='fw-bold mb-1'>John Doe</p>
-                          <p className='text-muted mb-0'>jd@gmail.com</p>
-                        </div>
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+        console.log(response.data)
+        setUserData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  return (
+    <MDBContainer className='' fluid>
+      <section>
+        <div className='shadow-8 rounded-4 overflow-hidden ml-auto' style={{ width: '95%', marginRight: '-15px' }}>
+          <MDBTable>
+            <MDBTableHead light>
+              <tr>
+                <th className="align-middle">Work with</th>
+                <th className="align-middle">Role</th>
+              </tr>
+            </MDBTableHead>
+            <MDBTableBody>
+              {userData.map((user, index) => (
+                <tr key={index}>
+                  <td className="align-middle">
+                    <div className='d-flex align-items-center'>
+                      <img
+                        src={user.avatar}
+                        alt=''
+                        style={{ width: '45px', height: '45px' }}
+                        className='rounded-circle'
+                      />
+                      <div className='ms-3'>
+                        <p className='fw-bold mb-1'>{user.name}</p>
+                        <p className='text-muted mb-0'>{user.email}</p>
                       </div>
-                    </a>
+                    </div>
                   </td>
-                  <td>
-                    <p className='fw-normal mb-1'>Producer</p>
-                    <p className='text-muted mb-0'>Beats</p>
+                  <td className="align-middle">
+                    <p className='fw-normal mb-1'>{user.role}</p>
+                    <p className='text-muted mb-0'>{user.category}</p>
                   </td>
                 </tr>
-              </MDBTableBody>
-            </MDBTable>
-          </div>
-        </section>
-      </MDBContainer>
-    </div>
+              ))}
+            </MDBTableBody>
+          </MDBTable>
+        </div>
+      </section>
+    </MDBContainer>
   );
 }
 
