@@ -40,18 +40,24 @@ const page = ({params}) => {
 
   return (
     <div className='shadow-lg'>
-      <OffCanvas id={user.user_id} />
-      <ProfileInfo tabData={handleChildData} user={user}/>
-      {tabSelected === 'profile' ? (
-        <section>
-          <ProfileAbout bio={about}/>
-          <ProfileSkills/>
-        </section>
-      ) : tabSelected === 'posts' ? (
-        <p>Content for tab B</p>
-      ) : (
-        <p>Default Content</p>
-      )}
+      <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
+        <div style={{ flex: '1' }}>
+          <OffCanvas id={user.user_id} />
+        </div>
+        <div style={{ flex: '5' }}>
+          <ProfileInfo tabData={handleChildData} user={user}/>
+          {tabSelected === 'profile' ? (
+            <section>
+              <ProfileAbout bio={about}/>
+              <ProfileSkills/>
+            </section>
+          ) : tabSelected === 'posts' ? (
+            <p>Content for tab B</p>
+          ) : (
+            <p>Default Content</p>
+          )}
+        </div>
+      </div>
       <Footer />
     </div>
   )

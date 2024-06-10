@@ -8,4 +8,5 @@ urlpatterns = [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('editpassword/', views.editpassword, name='editpassword'),
+    path('suggestions/', views.suggest_users, name='suggestions')
 ]

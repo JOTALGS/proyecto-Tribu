@@ -75,3 +75,20 @@ def editpassword(request):
         return JsonResponse({'message': 'success'})
     else:
         return JsonResponse({'message': form.errors.as_json()}, safe=False)
+
+
+def suggest_users(request):
+    users = User.objects.all()
+    user_data = []
+
+    for user in users:
+        profile = Profile.objects.get(user=user)
+        user_data.append({
+            'username': user.username,
+            'role': profile.category,
+            'email': user.email  # Incluye el correo electrónico
+        })
+
+    return JsonResponse({
+        'usersData': user_data
+    })

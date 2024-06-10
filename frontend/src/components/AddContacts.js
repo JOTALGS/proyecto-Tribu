@@ -7,10 +7,10 @@ function App() {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users')
+    axios.get('http://localhost:8000/api/suggestions/')
       .then(response => {
-        console.log(response.data)
-        setUserData(response.data);
+        console.log('response suggestions', response.data.usersData)
+        setUserData(response.data.usersData);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -40,7 +40,7 @@ function App() {
                         className='rounded-circle'
                       />
                       <div className='ms-3'>
-                        <p className='fw-bold mb-1'>{user.name}</p>
+                        <p className='fw-bold mb-1'>{user.username}</p>
                         <p className='text-muted mb-0'>{user.email}</p>
                       </div>
                     </div>
