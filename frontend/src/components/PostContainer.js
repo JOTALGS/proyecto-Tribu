@@ -1,24 +1,27 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Post from './Posts';
+import api from '@/assets/api'
 
 
 const PostContainer = () => {
   // Hardcoded posts for demonstration
-  const posts = [
-    { id: 1, content: 'Post 1 content' },
-    { id: 2, content: 'Post 2 content' },
-    { id: 3, content: 'Post 3 content' },
-    { id: 4, content: 'Post 4 content' },
-    { id: 5, content: 'Post 5 content' },
-    { id: 6, content: 'Post 6 content' },
-    { id: 7, content: 'Post 7 content' },
-    { id: 8, content: 'Post 8 content' },
-    { id: 9, content: 'Post 9 content' },
-    { id: 10, content: 'Post 10 content' },
-  ];
+  const [allPosts, setPosts] = useState([]);
+
+
+
+  const whenMounted = async () => {
+    try {
+      const response = await api.get(`api/posts/`)
+      setPosts(response.data.posts)
+      console.log('posts', response.data.posts)
+    } catch (error) {
+      console.error(error.response ? error.response.data : error.message);
+    }
+  }
 
   useEffect(() => {
+    whenMounted();
     const style = document.createElement('style');
     style.innerHTML = `
       .hide-scrollbar::-webkit-scrollbar {
@@ -37,13 +40,12 @@ const PostContainer = () => {
 
   return (
     <div className="overflow-y-auto mx-auto mt-4 p-4 hide-scrollbar" style={{ height: '65vh', width: '50vw' }}>
-      {posts.map(post => (
+      {allPosts.map(post => (
         <Post 
           key={post.id}
           profilePic="https://via.placeholder.com/200x100"
-          name="John Doe"
-          body={post.content}
-          attachment="https://via.placeholder.com/200x100"
+          name={post.created_by}
+          body={post.body}
         />
       ))}
     </div>

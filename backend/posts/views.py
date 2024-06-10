@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Post, Like
 from .forms import PostForm
+from .serializers import PostSerializer
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from django.http import JsonResponse
 
@@ -11,9 +12,10 @@ def create_post(request):
     data = request.data
     message = 'success'
 
+    print('data', request.data)
     form = PostForm({
         'created_by': request.user,
-        'body': data.get('body'),
+        'body': request.data,
     })
 
     if form.is_valid():
@@ -27,3 +29,9 @@ def create_post(request):
     return JsonResponse({'message': message}, safe=False)
 
 
+
+@api_view(['GET'])
+def get_posts(request):
+    posts = Post.objects.all()
+    serialized_posts = PostSerializer(posts, many=True).data
+    return JsonResponse({'posts': serialized_posts}, safe=False)

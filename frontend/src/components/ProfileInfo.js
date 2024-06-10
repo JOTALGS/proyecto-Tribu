@@ -45,8 +45,7 @@ export default function ProfilePage({ tabData, user }) {
   };
 
   const handleButtonClick2 = (buttonName) => {
-    setSelectedButton2(buttonName);
-    tabData(buttonName);
+    setSelectedButton2(buttonName);;
   };
 
   const handleMyWorkButtonClick = () => {
@@ -70,7 +69,7 @@ export default function ProfilePage({ tabData, user }) {
               </div>
               <div style={{ flex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem' }}>
                 <p>{user.username}</p>
-                <p className="text-gray-500 mb-1">Productor músical</p>
+                <p className="text-gray-500 mb-1">Productor {user.choice}</p>
                 <p className="text-gray-500 mb-4">Montevideo, UY</p>
               </div>
             </div>

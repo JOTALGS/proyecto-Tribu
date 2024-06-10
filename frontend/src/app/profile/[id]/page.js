@@ -32,7 +32,7 @@ const page = ({params}) => {
     }
   }
 
-  useEffect(() => {
+  useEffect(() => { 
     whenMounted();
   }, []);
 
