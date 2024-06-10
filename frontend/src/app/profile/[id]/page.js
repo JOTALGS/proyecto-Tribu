@@ -6,6 +6,7 @@ import ProfileInfo from '@/components/ProfileInfo'
 import ProfileAbout from '@/components/ProfileAbout'
 import api from '@/assets/api'
 import ProfileSkills from '@/components/ProfileSkills'
+import MyWork from '@/components/MyWork'
 
 
 const page = ({params}) => {
@@ -44,7 +45,7 @@ const page = ({params}) => {
         <div style={{ flex: '1' }}>
           <OffCanvas id={user.user_id} />
         </div>
-        <div style={{ flex: '5' }}>
+        <div style={{ flex: '10' }}>
           <ProfileInfo tabData={handleChildData} user={user}/>
           {tabSelected === 'profile' ? (
             <section>
@@ -52,7 +53,7 @@ const page = ({params}) => {
               <ProfileSkills/>
             </section>
           ) : tabSelected === 'posts' ? (
-            <p>Content for tab B</p>
+            <MyWork/>
           ) : (
             <p>Default Content</p>
           )}

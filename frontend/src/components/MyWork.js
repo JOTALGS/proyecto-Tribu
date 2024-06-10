@@ -36,7 +36,7 @@ export default function MyWork() {
   }, []);
 
   return (
-    <section style={{ backgroundColor: '#eee' }}>
+    <section style={{ backgroundColor: 'white' }}>
       <div className='mx-auto items-center'>
         <div className='mx-auto px-8 py-6 bg-green-800 border shadow-lg text-white' style={{ width: '70vw' }}>
           <h2 className='font-bold text-lg'>All my work</h2>

@@ -4,7 +4,7 @@ import PostInput from '@/components/CreatePost';
 import OffCanvas from '@/components/OffCanvas';
 import PostContainer from '@/components/PostContainer';
 import Footer from '@/components/Footer';
-import App from '@/components/AddContacts';
+import AddContacts from '@/components/AddContacts';
 import api from '@/assets/api';
 
 const Page = () => {
@@ -28,14 +28,14 @@ const Page = () => {
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}> 
       <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
         <div style={{ flex: '1' }}>
-          <OffCanvas id="5" />
+          <OffCanvas id="5"/>
         </div>
         <div className='mx-auto' style={{ flex: '3', padding: '10px', maxWidth: 'calc(100% - 700px)' }}>
           <PostInput onSubmit={handleChildData} />
           <PostContainer />
         </div>
         <div style={{ flex: '1', width: '700px', padding: '20px' }}>
-          <App />
+          <AddContacts />
         </div>
       </div>
       <Footer />

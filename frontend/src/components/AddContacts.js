@@ -20,7 +20,7 @@ function App() {
   return (
     <MDBContainer className='' fluid>
       <section>
-        <div className='shadow-8 rounded-4 overflow-hidden ml-auto' style={{ width: '95%', marginRight: '-15px' }}>
+        <div className='shadow-8 rounded-4 overflow-hidden ml-auto overflow-y-auto' style={{height: '80vh', width: '95%', marginRight: '-15px' }}>
           <MDBTable>
             <MDBTableHead light>
               <tr>
