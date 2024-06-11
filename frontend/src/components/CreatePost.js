@@ -1,4 +1,3 @@
-'use client'
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
@@ -17,7 +16,7 @@ const PostInput = ({ onSubmit }) => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg mx-auto mt-2" style={{ maxWidth: '90vw', width: '50vw' }}>
+    <div className="bg-white border border-gray-300 rounded-lg mx-auto mt-2" style={{ maxWidth: '90vw', width: '50vw', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
       <Form onSubmit={handleSubmit} className="flex flex-col">
         <div className="px-4 pt-2">
           <Form.Control 
@@ -30,8 +29,8 @@ const PostInput = ({ onSubmit }) => {
         </div>
 
         <div className="px-4 pb-2 flex justify-between">
-          <Button variant="outline-success text-white" className="text-white">Add Link</Button>
-          <Button variant="outline-success text-white" className="text-white" type="submit">Post</Button>
+          <Button variant="outline-success" className="bg-green-500">Add Link</Button>
+          <Button variant="outline-success" className="bg-green-500" type="submit">Post</Button>
         </div>
       </Form>
     </div>

@@ -28,11 +28,11 @@ function VerticallyCenteredModal({ show, onHide, userData }) {
       </style>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+        Expand Your Network
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
+        <h4></h4>
         <table className="table">
           <thead>
             <tr>

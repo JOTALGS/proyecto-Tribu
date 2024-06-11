@@ -1,4 +1,3 @@
-'use client'
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import logo from '../../public/images/logo.png';
@@ -23,10 +22,9 @@ const Footer = () => {
             <div>
               <h6 className='text-uppercase fw-bold'>Our platform</h6>
               <ul className='list-unstyled mb-0'>
-                <li><a href='#!' className='text-reset'>Home</a></li>
-                <li><a href='#!' className='text-reset'>Settings</a></li>
-                <li><a href='#!' className='text-reset'>Landing page</a></li>
-                <li><a href='#!' className='text-reset'>Profile</a></li>
+                <li><a href='home' className='text-reset'>Home</a></li>
+                <li><a href='settings' className='text-reset'>Settings</a></li>
+                <li><a href='Profile' className='text-reset'>Profile</a></li>
               </ul>
             </div>
           </MDBCol>
@@ -35,7 +33,7 @@ const Footer = () => {
             <div>
               <h6 className='text-uppercase fw-bold'>Contact with our team</h6>
               <ul className='list-unstyled mb-0'>
-                <li><MDBIcon color='secondary' icon='envelope' className='me-2' />tribu@gmail.com</li>
+                <li><a href='mailto:tribu@gmail.com' className='text-reset'><MDBIcon color='secondary' icon='envelope' className='me-2' />tribu@gmail.com</a></li>
                 <li><MDBIcon color='secondary' icon='home' className='me-2' />MONTEVIDEO, UY 11200</li>
               </ul>
             </div>

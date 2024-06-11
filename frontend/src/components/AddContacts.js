@@ -42,7 +42,7 @@ function AddContacts({ sendSignal }) {
   };
 
   return (
-    <MDBContainer className='' fluid>
+    <MDBContainer className='' fluid style={{ borderRadius: '12px', boxShadow: '0px 3px 7px rgba(0, 0, 0, 0.2)' }}>
       <section>
         <div onClick={handleOpenModal}>
           <div className='shadow-8 rounded-4 overflow-hidden overflow-y-auto ml-auto hide-scrollbar' style={{ height: '80vh', width: '95%', marginRight: '0px', overflowY: 'auto' }}>
