@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-
+import { Button, Form } from 'react-bootstrap';
 
 const PostInput = ({ onSubmit }) => {
   const [content, setContent] = useState('');
@@ -8,7 +8,7 @@ const PostInput = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(content);
-    console.log('event', content)
+    console.log('event', content);
     setContent('');
   };
 
@@ -17,18 +17,23 @@ const PostInput = ({ onSubmit }) => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg mx-auto mt-2" style={{ width: '50vw' }}>
-        <form onSubmit={handleSubmit} className="flex flex-col">
-            <div className="px-4 pt-2">  
-                <textarea value={content} onChange={handleChange}  className="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>
-            </div>
+    <div className="bg-white border border-gray-200 rounded-lg mx-auto mt-2" style={{ maxWidth: '90vw', width: '50vw' }}>
+      <Form onSubmit={handleSubmit} className="flex flex-col">
+        <div className="px-4 pt-2">
+          <Form.Control 
+            as="textarea" 
+            value={content} 
+            onChange={handleChange} 
+            className="p-4 w-full bg-gray-100 rounded-lg" 
+            placeholder="What are you thinking about?"
+          />
+        </div>
 
-            <div className="px-4 pb-2 flex justify-between">
-                <a href="#" className="inline-block py-2 px-6 bg-gray-600 text-white rounded-lg">Add Link</a>
-
-                <button className="inline-block py-2 px-6 bg-lime-700 text-white rounded-lg">Post</button>
-            </div>
-        </form>
+        <div className="px-4 pb-2 flex justify-between">
+          <Button variant="outline-success text-white" className="text-white">Add Link</Button>
+          <Button variant="outline-success text-white" className="text-white" type="submit">Post</Button>
+        </div>
+      </Form>
     </div>
   );
 };

@@ -44,7 +44,7 @@ const PostContainer = () => {
         <Post 
           key={post.id}
           profilePic="https://via.placeholder.com/200x100"
-          name={post.created_by}
+          name={post.created_by.username}
           body={post.body}
         />
       ))}
