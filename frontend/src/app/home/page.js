@@ -5,14 +5,13 @@ import OffCanvas from '@/components/OffCanvas';
 import PostContainer from '@/components/PostContainer';
 import Footer from '@/components/Footer';
 import AddContacts from '@/components/AddContacts';
-import { MDBModal, MDBModalBody, MDBBtn } from 'mdb-react-ui-kit';
+import api from '@/utils/api';
+
 
 const Page = () => {
-  const [formData, setFormData] = useState();
 
   const handleChildData = async (data) => {
     console.log('Data from child:', data);
-    setFormData(data);
 
     try {
       const response = await api.post('api/create/', data); // Use the latest form data
@@ -21,6 +20,7 @@ const Page = () => {
       console.error(error.response ? error.response.data : error.message);
     }
   };
+
   return (
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}> 
       <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>

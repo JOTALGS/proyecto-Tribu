@@ -77,6 +77,7 @@ def editpassword(request):
         return JsonResponse({'message': form.errors.as_json()}, safe=False)
 
 
+@api_view(['GET'])
 def suggest_users(request):
     users = User.objects.all()
     user_data = []

@@ -45,7 +45,7 @@ function AddContacts({ sendSignal }) {
     <MDBContainer className='' fluid style={{ borderRadius: '12px', boxShadow: '0px 3px 7px rgba(0, 0, 0, 0.2)' }}>
       <section>
         <div onClick={handleOpenModal}>
-          <div className='shadow-8 rounded-4 overflow-hidden overflow-y-auto ml-auto hide-scrollbar' style={{ height: '80vh', width: '95%', marginRight: '0px', overflowY: 'auto' }}>
+          <div className='shadow-8 rounded-4 overflow-hidden overflow-y-auto mx-auto hide-scrollbar' style={{ height: '80vh', width: '95%', marginRight: '0px', overflowY: 'auto' }}>
             <MDBTable>
               <MDBTableHead>
                 <tr>
@@ -55,7 +55,7 @@ function AddContacts({ sendSignal }) {
               </MDBTableHead>
               <MDBTableBody>
                 {userData.map((user, index) => (
-                  <tr key={index}>
+                  <tr style={{ cursor: 'pointer' }}>
                     <td className="align-middle">
                       <div className='d-flex align-items-center'>
                         <img

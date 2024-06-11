@@ -15,7 +15,8 @@ def create_post(request):
     print('data', request.data)
     form = PostForm({
         'created_by': request.user,
-        'body': request.data,
+        'body': request.data['content'],
+        'link': request.data['link']
     })
 
     if form.is_valid():
