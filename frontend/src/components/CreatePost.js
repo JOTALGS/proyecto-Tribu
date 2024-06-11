@@ -3,16 +3,33 @@ import { Button, Form } from 'react-bootstrap';
 
 const PostInput = ({ onSubmit }) => {
   const [content, setContent] = useState('');
+  const [showLinkInput, setShowLinkInput] = useState(false);
+  const [link, setLink] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(content);
-    console.log('event', content);
+    onSubmit(content, link);
     setContent('');
+    setLink('');
   };
 
   const handleChange = (e) => {
-    setContent(e.target.value); // Update the content state as the user types
+    setContent(e.target.value);
+  };
+
+  const handleAddLinkClick = () => {
+    if (showLinkInput) {
+      onSubmit(content, link);
+      setContent('');
+      setLink('');
+      setShowLinkInput(false);
+    } else {
+      setShowLinkInput(true);
+    }
+  };
+
+  const handleLinkChange = (e) => {
+    setLink(e.target.value);
   };
 
   return (
@@ -28,8 +45,22 @@ const PostInput = ({ onSubmit }) => {
           />
         </div>
 
+        {showLinkInput && (
+          <div className="px-4 py-2">
+            <Form.Control 
+              type="text" 
+              value={link} 
+              onChange={handleLinkChange} 
+              className="p-2 w-full bg-gray-100 rounded-lg" 
+              placeholder="Enter link here"
+            />
+          </div>
+        )}
+
         <div className="px-4 pb-2 flex justify-between">
-          <Button variant="outline-success" className="bg-green-500">Add Link</Button>
+          <Button variant="outline-success" className="bg-green-500" onClick={handleAddLinkClick}>
+            {showLinkInput ? 'Close Link' : 'Add Link'}
+          </Button>
           <Button variant="outline-success" className="bg-green-500" type="submit">Post</Button>
         </div>
       </Form>

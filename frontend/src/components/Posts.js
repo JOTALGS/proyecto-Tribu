@@ -22,8 +22,7 @@ const Post = ({ profilePic, name, body, attachment, link }) => {
       
       {attachment && <img src={attachment} alt="Attachment" style={styles.attachment} />}
       <div style={styles.footer}>
-        <button style={styles.button}>Like</button>
-        <button style={styles.button}>Comments</button>
+
       </div>
     </div>
   );

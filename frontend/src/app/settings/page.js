@@ -45,13 +45,14 @@ const Page = () => {
       city,
       role,
       bio,
-    };
-    console.log(profileData);
-    // api.saveProfile(profileData);
-  };
-
-  return (
-    <div className="min-h-screen flex flex-col">
+      };
+      console.log(profileData);
+      // api.saveProfile(profileData);
+      };
+      
+      return (
+      <div className="min-h-screen flex flex-col">
+      <OffCanvas />
       <div className="shadow-lg p-4 mx-auto flex-grow" style={{ maxWidth: '80vw', minWidth: '800px' }}>
         <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
         
@@ -121,7 +122,6 @@ const Page = () => {
         <button type="button" onClick={handleSave} className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600">Guardar</button>
       </div>
 
-      <OffCanvas />
 
       <Footer className="w-full bg-gray-800 text-white mt-auto" />
     </div>
