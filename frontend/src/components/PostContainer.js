@@ -46,6 +46,7 @@ const PostContainer = () => {
           profilePic="https://via.placeholder.com/200x100"
           name={post.created_by.username}
           body={post.body}
+          link={post.link}
         />
       ))}
     </div>

@@ -15,6 +15,7 @@ class Post(models.Model):
     created_by = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='static/post_images')
     body = models.TextField()
+    link = models.TextField(blank=True)
     likes = models.ManyToManyField(Like, blank=True)
     likes_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=datetime.now)

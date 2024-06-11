@@ -2,24 +2,32 @@
 import React, { useEffect, useState } from 'react';
 import { fetchYouTubeVideoData } from '../utils/youtube';
 
-const YouTubeVideo = ({ videoId }) => {
+const YouTubeVideo = ({ url }) => {
   const [videoData, setVideoData] = useState(null);
+  
 
   useEffect(() => {
-    async function getVideoData() {
-      const data = await fetchYouTubeVideoData(videoId);
-      setVideoData(data);
+    const videoId = extractVideoId(url);
+    console.log('yt vid id', videoId)
+    if (videoId) {
+      async function getVideoData() {
+        const data = await fetchYouTubeVideoData(videoId);
+        setVideoData(data);
+      }
+      getVideoData();
     }
+  }, [url]);
 
-    getVideoData();
-  }, [videoId]);
+  const extractVideoId = (url) => {
+    const videoIdRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/]+\/*.be\/|embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(videoIdRegex);
+    return match ? match[1] : null;
+  };
 
   if (!videoData) return <p>Loading...</p>;
 
-  const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-
   return (
-    <a href={videoUrl} target="_blank" rel="noopener noreferrer" className='text-black'>
+    <a href={url} target="_blank" rel="noopener noreferrer" className='text-black'>
       <div>
         <img src={videoData.thumbnails.medium.url} alt={videoData.title} />
         <h3>{videoData.title}</h3>

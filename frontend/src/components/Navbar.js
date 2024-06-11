@@ -58,7 +58,9 @@ const Navbar = () => {
           {isAuthenticated ? (
             <Button variant="outline-success text-white" onClick={handleLogout}>Log out</Button>
           ) : (
-            <Button variant="outline-success text-white">Log in</Button>
+            <Link href={'/login'}>
+              <Button variant="outline-success text-white">Log in</Button>
+            </Link>
           )}
         </div>
       </div>

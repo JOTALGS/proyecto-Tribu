@@ -4,8 +4,9 @@ import YouTubeVideo from './YtLink';
 import SoundCloudTrack from './SoundCloudLink';
 
 
-const Post = ({ profilePic, name, body, attachment }) => {
-  const soundCloudUrl = 'https://soundcloud.com/trommelmusic/premiere-a2-jyoel-dreams-jnjs-remix-mateltd003?si=d5d09a8d4c494d318ca5ab57c909dcde&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing';
+const Post = ({ profilePic, name, body, attachment, link }) => {
+  const isSoundCloud = link.includes('soundcloud.com');
+  const isYouTube = link.includes('youtube.com');
 
   return (
     <div style={styles.postContainer}>
@@ -14,8 +15,10 @@ const Post = ({ profilePic, name, body, attachment }) => {
         <span style={styles.name}>{name}</span>
       </div>
       <div style={styles.body}>{body}</div>
-      <YouTubeVideo videoId={'n8QurABRsqE'}/>
-      <SoundCloudTrack url={soundCloudUrl} />
+
+      {isYouTube && <YouTubeVideo url={link} />}
+      {isSoundCloud && <SoundCloudTrack url={link} />}
+      {!isYouTube && !isSoundCloud && <a href={link} target="_blank" rel="noopener noreferrer"><p>{link}</p></a>}
       
       {attachment && <img src={attachment} alt="Attachment" style={styles.attachment} />}
       <div style={styles.footer}>
