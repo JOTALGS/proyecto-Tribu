@@ -37,7 +37,11 @@ const Navbar = () => {
     <div className="w-full h-20 bg-green-700 sticky top-0">
       <div className="px-1 h-full w-full flex items-center">
         <div className="flex-start text-white">
+        <Link href="/home">
+          
           <img width={230} height={70} src="/images/logo.png" alt="Tribu logo" style={{ width: '15vw' }}/>
+          
+          </Link>
         </div>
   
         <div className="flex flex-center mx-auto justify-center items-center">
