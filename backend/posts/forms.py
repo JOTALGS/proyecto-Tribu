@@ -4,4 +4,4 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('created_by', 'body')
+        fields = ('created_by', 'body', 'link',)
