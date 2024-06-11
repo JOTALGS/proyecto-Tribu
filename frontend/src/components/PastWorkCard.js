@@ -10,7 +10,8 @@ function PastWorkCard() {
         <Card.Text>
           Card description
         </Card.Text>
-        <Button variant="success" className="bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300">Go somewhere</Button>
+        <Button variant="success" className="font-bold mt-4 p-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300"
+        >Go somewhere</Button>
       </Card.Body>
     </Card>
   );

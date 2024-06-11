@@ -38,8 +38,8 @@ export default function MyWork() {
   return (
     <section style={{ backgroundColor: 'white' }}>
       <div className='mx-auto items-center'>
-        <div className='mx-auto px-8 py-6 bg-green-800 border shadow-lg text-white' style={{ width: '70vw' }}>
-          <h2 className='font-bold text-lg'>All my work</h2>
+        <div className='mx-auto px-8 py-6 bg-white border shadow-lg text-white' style={{ width: '70vw' }}>
+          <h2 className='font-bold text-lg' style={{ color: 'black' }}>All my work</h2>
           <div
             style={{
               maxHeight: isExpanded ? `${contentRef.current.scrollHeight}px` : '37vh',
@@ -131,7 +131,7 @@ export default function MyWork() {
           </div>
           <button
             onClick={handleToggle}
-            className='font-bold mt-1 p-2 bg-transparent hover:bg-white hover:bg-opacity-25 transition-colors duration-300'
+            className='font-bold mt-1 p-2 bg-green-500 hover:bg-green-600 transition-colors duration-300'
           >
             {isExpanded ? 'See less' : 'See more'}
           </button>
