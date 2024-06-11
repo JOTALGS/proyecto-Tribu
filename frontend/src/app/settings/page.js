@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '@/components/Footer';
 import OffCanvas from '@/components/OffCanvas';
-import api from '@/assets/api';
+import api from '@/utils/api';
 
 const Page = () => {
   const [profilePic, setProfilePic] = useState('');

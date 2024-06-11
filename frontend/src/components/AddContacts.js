@@ -1,20 +1,24 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
+import VerticallyCenteredModal from './CenteredModal';
 
-function App() {
+function AddContacts({ sendSignal }) {
   const [userData, setUserData] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/suggestions/')
-      .then(response => {
-        console.log('response suggestions', response.data.usersData)
-        setUserData(response.data.usersData);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    if (typeof window !== 'undefined') {
+      axios.get('http://localhost:8000/api/suggestions/')
+        .then(response => {
+          console.log('response suggestions', response.data.usersData);
+          setUserData(response.data.usersData);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
 
       const style = document.createElement('style');
       style.innerHTML = `
@@ -30,48 +34,61 @@ function App() {
       return () => {
         document.head.removeChild(style);
       };
+    }
   }, []);
+
+  const handleOpenModal = () => {
+    setModalShow(true);
+  };
 
   return (
     <MDBContainer className='' fluid>
       <section>
-        <MDBTable>
-            <MDBTableHead light>
-              <tr>
-                <th className="align-middle">Work with</th>
-                <th className="align-middle">Role</th>
-              </tr>
-            </MDBTableHead>
-        <div className='shadow-8 rounded-4 overflow-hidden ml-auto overflow-y-auto hide-scrollbar' style={{height: '80vh', width: '95%', marginRight: '0px' }}>
-            <MDBTableBody>
-              {userData.map((user, index) => (
-                <tr key={index}>
-                  <td className="align-middle">
-                    <div className='d-flex align-items-center'>
-                      <img
-                        src={user.avatar}
-                        alt=''
-                        style={{ width: '45px', height: '45px' }}
-                        className='rounded-circle'
-                      />
-                      <div className='ms-3'>
-                        <p className='fw-bold mb-1'>{user.username}</p>
-                        <p className='text-muted mb-0'>{user.email}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="align-middle">
-                    <p className='fw-normal mb-1'>{user.role}</p>
-                    <p className='text-muted mb-0'>{user.category}</p>
-                  </td>
+        <div onClick={handleOpenModal}>
+          <div className='shadow-8 rounded-4 overflow-hidden overflow-y-auto ml-auto hide-scrollbar' style={{ height: '80vh', width: '95%', marginRight: '0px', overflowY: 'auto' }}>
+            <MDBTable>
+              <MDBTableHead>
+                <tr>
+                  <td>Work with</td>
+                  <td>Role</td>
                 </tr>
-              ))}
-            </MDBTableBody>
+              </MDBTableHead>
+              <MDBTableBody>
+                {userData.map((user, index) => (
+                  <tr key={index}>
+                    <td className="align-middle">
+                      <div className='d-flex align-items-center'>
+                        <img
+                          src='https://via.placeholder.com/200x100'
+                          alt=''
+                          style={{ width: '45px', height: '45px' }}
+                          className='rounded-circle'
+                        />
+                        <div className='ms-3'>
+                          <p className='fw-bold mb-1'>{user.username}</p>
+                          <p className='text-muted mb-0'>{user.email}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="align-middle">
+                      <p className='fw-normal mb-1'>{user.role}</p>
+                      <p className='text-muted mb-0'>{user.category}</p>
+                    </td>
+                  </tr>
+                ))}
+              </MDBTableBody>
+            </MDBTable>
+          </div>
         </div>
-          </MDBTable>
+
+        <VerticallyCenteredModal 
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            userData={userData}
+            />
       </section>
     </MDBContainer>
   );
 }
 
-export default App;
+export default AddContacts;

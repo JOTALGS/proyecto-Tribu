@@ -4,7 +4,7 @@ import OffCanvas from '@/components/OffCanvas'
 import React, { useEffect, useState } from 'react'
 import ProfileInfo from '@/components/ProfileInfo'
 import ProfileAbout from '@/components/ProfileAbout'
-import api from '@/assets/api'
+import api from '@/utils/api'
 import ProfileSkills from '@/components/ProfileSkills'
 import MyWork from '@/components/MyWork'
 

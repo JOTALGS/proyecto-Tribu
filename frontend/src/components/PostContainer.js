@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Post from './Posts';
-import api from '@/assets/api'
+import api from '@/utils/api'
 
 
 const PostContainer = () => {

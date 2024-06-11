@@ -1,8 +1,12 @@
 'use client'
 import React from 'react';
+import YouTubeVideo from './YtLink';
+import SoundCloudTrack from './SoundCloudLink';
 
 
 const Post = ({ profilePic, name, body, attachment }) => {
+  const soundCloudUrl = 'https://soundcloud.com/trommelmusic/premiere-a2-jyoel-dreams-jnjs-remix-mateltd003?si=d5d09a8d4c494d318ca5ab57c909dcde&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing';
+
   return (
     <div style={styles.postContainer}>
       <div style={styles.header}>
@@ -10,6 +14,9 @@ const Post = ({ profilePic, name, body, attachment }) => {
         <span style={styles.name}>{name}</span>
       </div>
       <div style={styles.body}>{body}</div>
+      <YouTubeVideo videoId={'n8QurABRsqE'}/>
+      <SoundCloudTrack url={soundCloudUrl} />
+      
       {attachment && <img src={attachment} alt="Attachment" style={styles.attachment} />}
       <div style={styles.footer}>
         <button style={styles.button}>Like</button>

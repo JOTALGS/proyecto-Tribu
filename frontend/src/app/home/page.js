@@ -1,17 +1,16 @@
-'use client'
-import React, { useEffect, useState } from 'react';
+'use client';
+import React, { useState } from 'react';
 import PostInput from '@/components/CreatePost';
 import OffCanvas from '@/components/OffCanvas';
 import PostContainer from '@/components/PostContainer';
 import Footer from '@/components/Footer';
 import AddContacts from '@/components/AddContacts';
-import api from '@/assets/api';
+import { MDBModal, MDBModalBody, MDBBtn } from 'mdb-react-ui-kit';
 
 const Page = () => {
-  const [fromData, setFormData] = useState();
+  const [formData, setFormData] = useState();
 
   const handleChildData = async (data) => {
-    // Do something with the data received from the child component
     console.log('Data from child:', data);
     setFormData(data);
 
@@ -22,8 +21,6 @@ const Page = () => {
       console.error(error.response ? error.response.data : error.message);
     }
   };
-
-
   return (
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}> 
       <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
