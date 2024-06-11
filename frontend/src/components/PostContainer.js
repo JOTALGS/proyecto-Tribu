@@ -1,24 +1,20 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Post from './Posts';
-import api from '@/utils/api'
-
+import api from '@/utils/api';
 
 const PostContainer = () => {
-  // Hardcoded posts for demonstration
   const [allPosts, setPosts] = useState([]);
-
-
 
   const whenMounted = async () => {
     try {
-      const response = await api.get(`api/posts/`)
-      setPosts(response.data.posts)
-      console.log('posts', response.data.posts)
+      const response = await api.get(`api/posts/`);
+      setPosts(response.data.posts);
+      console.log('posts', response.data.posts);
     } catch (error) {
       console.error(error.response ? error.response.data : error.message);
     }
-  }
+  };
 
   useEffect(() => {
     whenMounted();
@@ -31,6 +27,10 @@ const PostContainer = () => {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
       }
+      .post-container > div:not(:last-child) {
+        margin-bottom: 10px; /* Espacio entre cada post */
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra entre cada post */
+      }
     `;
     document.head.appendChild(style);
     return () => {
@@ -39,7 +39,7 @@ const PostContainer = () => {
   }, []);
 
   return (
-    <div className="overflow-y-auto mx-auto mt-2 px-4 hide-scrollbar" style={{ height: '65vh', width: '50vw' }}>
+    <div className="overflow-y-auto mx-auto mt-2 px-4 hide-scrollbar post-container" style={{ height: '65vh', width: '50vw' }}>
       {allPosts.map(post => (
         <Post 
           key={post.id}
