@@ -39,7 +39,7 @@ const PostContainer = () => {
   }, []);
 
   return (
-    <div className="overflow-y-auto mx-auto mt-4 p-4 hide-scrollbar" style={{ height: '65vh', width: '50vw' }}>
+    <div className="overflow-y-auto mx-auto mt-2 px-4 hide-scrollbar" style={{ height: '65vh', width: '50vw' }}>
       {allPosts.map(post => (
         <Post 
           key={post.id}

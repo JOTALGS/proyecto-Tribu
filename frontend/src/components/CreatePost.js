@@ -17,7 +17,7 @@ const PostInput = ({ onSubmit }) => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg mx-auto mt-5" style={{ width: '50vw' }}>
+    <div className="bg-white border border-gray-200 rounded-lg mx-auto mt-2" style={{ width: '50vw' }}>
         <form onSubmit={handleSubmit} className="flex flex-col">
             <div className="px-4 pt-2">  
                 <textarea value={content} onChange={handleChange}  className="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>

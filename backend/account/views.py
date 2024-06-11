@@ -84,6 +84,7 @@ def suggest_users(request):
     for user in users:
         profile = Profile.objects.get(user=user)
         user_data.append({
+            'user_id': user.id,
             'username': user.username,
             'role': profile.category,
             'email': user.email  # Incluye el correo electrónico

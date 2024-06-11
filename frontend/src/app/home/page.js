@@ -27,7 +27,7 @@ const Page = () => {
         <div style={{ flex: '1' }}>
           <OffCanvas id="5"/>
         </div>
-        <div className='mx-auto' style={{ flex: '3', padding: '10px', maxWidth: 'calc(100% - 700px)' }}>
+        <div className='mx-auto' style={{ flex: '3', maxWidth: 'calc(100% - 700px)' }}>
           <PostInput onSubmit={handleChildData} />
           <PostContainer />
         </div>
