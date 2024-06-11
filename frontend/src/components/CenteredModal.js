@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
@@ -43,25 +44,27 @@ function VerticallyCenteredModal({ show, onHide, userData }) {
           <tbody>
             {userData.map((user, index) => (
               <tr key={index}>
-                <td className="align-middle">
-                  <div className='d-flex align-items-center'>
-                    <img
-                      src='https://via.placeholder.com/200x100'
-                      alt=''
-                      style={{ width: '45px', height: '45px' }}
-                      className='rounded-circle'
-                    />
-                    <div className='ms-3'>
-                      <p className='fw-bold mb-1'>{user.username}</p>
-                      <p className='text-muted mb-0'>{user.email}</p>
+                  <td className="align-middle">
+                    <div className='d-flex align-items-center'>
+                      <img
+                        src='https://via.placeholder.com/200x100'
+                        alt=''
+                        style={{ width: '45px', height: '45px' }}
+                        className='rounded-circle'
+                      />
+                      <div className='ms-3'>
+                        <Link href={`/profile/${user.user_id}`} key={index} passHref>
+                        <p className='fw-bold mb-1'>{user.username}</p>
+                        <p className='text-muted mb-0'>{user.email}</p>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td className="align-middle">
-                  <p className='fw-normal mb-1'>{user.role}</p>
-                  <p className='text-muted mb-0'>{user.category}</p>
-                </td>
-              </tr>
+                  </td>
+                  <td className="align-middle">
+                    <p className='fw-normal mb-1'>{user.role}</p>
+                    <p className='text-muted mb-0'>{user.category}</p>
+                  </td>
+                </tr>
             ))}
           </tbody>
         </table>

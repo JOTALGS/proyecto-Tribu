@@ -8,7 +8,10 @@ const PostInput = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(content, link);
+    onSubmit({
+      'content': content,
+      'link': link
+    });
     setContent('');
     setLink('');
   };
@@ -35,7 +38,7 @@ const PostInput = ({ onSubmit }) => {
   return (
     <div className="bg-white border border-gray-300 rounded-lg mx-auto mt-2" style={{ maxWidth: '90vw', width: '50vw', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
       <Form onSubmit={handleSubmit} className="flex flex-col">
-        <div className="px-4 pt-2">
+        <div className="px-4 py-2">
           <Form.Control 
             as="textarea" 
             value={content} 
@@ -46,7 +49,7 @@ const PostInput = ({ onSubmit }) => {
         </div>
 
         {showLinkInput && (
-          <div className="px-4 py-2">
+          <div className="px-4 pb-2">
             <Form.Control 
               type="text" 
               value={link} 

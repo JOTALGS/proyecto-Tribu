@@ -7,7 +7,6 @@ const SoundCloudTrack = ({url}) => {
   const match = url.match(trackIdRegex);
   const trackId = match ? match[1] : '';
 
-  console.log(trackId)
 
   return (
     <>
