@@ -8,7 +8,17 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 function Contacto() {
   return (
-    <div style={{ width: '100%', height: '100%', padding: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+    <div style={{ 
+      width: '100%', 
+      height: '100%', 
+      padding: '20px', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      justifyContent: 'flex-start', 
+      alignItems: 'flex-start',
+      borderRadius: '8px', 
+      boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' 
+    }}>
       <h3 style={{ margin: '0' }}>Contact</h3>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', marginTop: '20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
