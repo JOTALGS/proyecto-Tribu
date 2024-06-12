@@ -1,8 +1,20 @@
+import api from '@/utils/api';
 import Link from 'next/link';
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 function VerticallyCenteredModal({ show, onHide, userData }) {
+
+  const sendFriendshipRequest = async (userId) => {
+    try {
+      const response = await api.post(`api/friends/${userId}/request/`, 'sent');
+      // Handle the response as needed
+      console.log(`Friendship request sent to user with ID: ${userId}`);
+    } catch (error) {
+      console.error(error.response ? error.response.data : error.message);
+    }
+  };
+
   return (
     <Modal
       show={show}
@@ -39,6 +51,7 @@ function VerticallyCenteredModal({ show, onHide, userData }) {
             <tr>
               <th>Work with</th>
               <th>Role</th>
+              <th>Connect</th>
             </tr>
           </thead>
           <tbody>
@@ -63,6 +76,11 @@ function VerticallyCenteredModal({ show, onHide, userData }) {
                   <td className="align-middle">
                     <p className='fw-normal mb-1'>{user.role}</p>
                     <p className='text-muted mb-0'>{user.category}</p>
+                  </td>
+                  <td>
+                    <Button variant="outline-success" className="bg-green-500" onClick={() => sendFriendshipRequest(user.user_id)}>
+                        Send request
+                    </Button>
                   </td>
                 </tr>
             ))}

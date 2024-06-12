@@ -5,7 +5,7 @@ from .forms import SignupForm, ProfileForm
 from .serializers import UserSerializer, PastWorkSerializer, SkillsSerializer
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, FriendshipRequest
 
 
 # Create your views here.
@@ -119,3 +119,60 @@ def suggest_users(request):
     return JsonResponse({
         'usersData': user_data
     })
+
+
+@api_view(['GET'])
+def friends(request, pk):
+    profile = Profile.objects.get(pk=pk)
+    requests = []
+
+    if user == request.user:
+        requests = FriendshipRequest.objects.filter(created_for=request.user, status=FriendshipRequest.SENT)
+        requests = FriendshipRequestSerializer(requests, many=True)
+        requests = requests.data
+
+    friends = profile.friends.all()
+
+    return JsonResponse({
+        'user': UserSerializer(user).data,
+        'friends': UserSerializer(friends, many=True).data,
+        'requests': requests
+    }, safe=False)
+
+
+@api_view(['POST', 'GET'])
+def send_friendship_request(request, pk):
+    if request.method == 'POST':
+        user = User.objects.get(pk=pk)
+
+        check1 = FriendshipRequest.objects.filter(created_for=request.user, created_by=user).exists()
+        check2 = FriendshipRequest.objects.filter(created_for=user, created_by=request.user).exists()
+
+        if not check1 and not check2:
+            friendrequest = FriendshipRequest.objects.create(created_for=user, created_by=request.user)
+            return JsonResponse({'message': 'friendship request created'})
+        else:
+            return JsonResponse({'message': 'request already sent'})
+
+    elif request.method == 'GET':
+        friendship_requests = FriendshipRequest.objects.filter(created_for=request.user)
+        requests_data = [{'id': fr.id, 'created_by': fr.created_by.id, 'created_at': fr.created_at} for fr in friendship_requests]
+        return JsonResponse({'friendship_requests': requests_data})
+
+
+@api_view(['POST'])
+def handle_request(request, pk, status):
+    profile = Profile.objects.get(pk=pk)
+    print('request.user.id', request.user.id)
+    request_profile = Profile.objects.get(pk=request.user.id)
+    friendship_request = FriendshipRequest.objects.filter(created_for=request_profile).get(created_by=profile)
+    friendship_request.status = status
+    friendship_request.save()
+
+    profile.friends.add(request_profile)
+    profile.save()
+
+    request_user = request_profile
+    request_user.save()
+
+    return JsonResponse({'message': 'friendship request updated'})

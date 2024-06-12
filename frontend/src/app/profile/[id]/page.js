@@ -7,6 +7,7 @@ import ProfileAbout from '@/components/ProfileAbout'
 import api from '@/utils/api'
 import ProfileSkills from '@/components/ProfileSkills'
 import MyWork from '@/components/MyWork'
+import ConnectRequests from '@/components/ConnectRequests'
 
 
 const page = ({params}) => {
@@ -25,7 +26,7 @@ const page = ({params}) => {
 
   const whenMounted = async () => {
     try {
-      const response = await api.get(`api/users/${id}`);
+      const response = await api.get(`api/users/${id}/request/`);
       setAbout(response.data.bio)
       setUser(response.data)
       console.log('user', response.data)
@@ -50,10 +51,13 @@ const page = ({params}) => {
           {tabSelected === 'profile' ? (
             <section>
               <ProfileAbout bio={about}/>
-              <ProfileSkills/>
+              <ConnectRequests />
             </section>
           ) : tabSelected === 'posts' ? (
-            <MyWork/>
+            <section>
+              <MyWork/>
+              <ProfileSkills/>
+            </section>
           ) : (
             <p>Default Content</p>
           )}

@@ -13,6 +13,7 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     category = models.CharField(max_length=10, choices=USER_CATEGORIES, default='musician')
+    friends = models.ManyToManyField('self')
 
     def __str__(self):
         return self.user.username
@@ -40,3 +41,21 @@ class Skills(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class FriendshipRequest(models.Model):
+    SENT = 'sent'
+    ACCEPTED = 'accepted'
+    REJECTED = 'rejected'
+
+    STATUS_CHOICES = (
+        (SENT, 'Sent'),
+        (ACCEPTED, 'Accepted'),
+        (REJECTED, 'Rejected'),
+    )
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    created_for = models.ForeignKey(User, related_name='received_friendshiprequests', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, related_name='created_friendshiprequests', on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=SENT)
