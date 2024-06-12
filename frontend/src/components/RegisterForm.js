@@ -29,9 +29,13 @@ const Register = () => {
         },
       });
       console.log('Response:', response.data);
-      saveAuthTokens(response.data);
-      console.log('Registration successful');
-      router.push('/home');
+      if (response.data) {
+        saveAuthTokens(response.data);
+        console.log('Registration successful');
+        router.push('/home');
+      } else {
+        console.log('No data received');
+      }
     } catch (error) {
       console.log('Error:', error);
       if (error.response && error.response.data) {
@@ -44,6 +48,7 @@ const Register = () => {
       }
     }
   };
+  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
