@@ -1,17 +1,15 @@
-// components/YouTubeVideo.js
 import React, { useEffect, useState } from 'react';
 import { fetchYouTubeVideoData } from '../utils/youtube';
 import YouTube from 'react-youtube';
 
-const YouTubeVideo = ({ url }) => {
+const YtLink = ({ url }) => {
   const [videoData, setVideoData] = useState(null);
   const [videoId, setVideoId] = useState();
-  const [isPlayable, setIsPlayable] = useState(true); // Flag to indicate if video is playable
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    var videoId = extractVideoId(url);
-    setVideoId(videoId)
-    console.log('yt vid id', videoId)
+    const videoId = extractVideoId(url);
+    setVideoId(videoId);
     if (videoId) {
       async function getVideoData() {
         const data = await fetchYouTubeVideoData(videoId);
@@ -30,9 +28,10 @@ const YouTubeVideo = ({ url }) => {
   if (!videoData) return <p>Loading...</p>;
 
   const truncatedTitle = videoData.title.length > 50 ? videoData.title.substring(0, 50) + '...' : videoData.title;
+  const playerWidth = isPlaying ? '400px' : '250px';
 
   return (
-    <div style={{
+    <div className='rounded-sm' style={{
       display: 'flex',
       alignItems: 'center',
       border: '1px solid #ccc',
@@ -47,21 +46,23 @@ const YouTubeVideo = ({ url }) => {
       wordBreak: 'normal',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      fontFamily: 'Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif',
+      fontFamily: 'Tahoma, sans-serif',
       fontWeight: '100',
     }}>
-      <MiniPlayer videoId={videoId} />
+      <div id="miniPlayer" style={{ transition: 'width 1s', width: playerWidth, }}>
+        <YouTube videoId={videoId} opts={{ height: '150', width: '100%' }} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} />
+      </div>
       <div style={{ marginLeft: '20px' }}>
-        <a href={url} target="_blank" rel="noopener noreferrer" className='text-black'>
+        <a href={url} target="_blank" rel="noopener noreferrer" className='text-black' style={{ textDecoration: 'none' }}>
           <div>
-            <img
+            <img className='rounded-lg mb-2'
               src={videoData.thumbnails.medium.url}
               alt={videoData.title}
               height="100"
               width="100"
             />
-            <h3 style={{ fontSize: '15px'}}>{truncatedTitle}</h3>
-            <p>{videoData.channelTitle}</p>
+            <h3 style={{ fontSize: '15px', fontWeight: 'bold'}}>{truncatedTitle}</h3>
+            <p >{videoData.channelTitle}</p>
           </div>
         </a>
       </div>
@@ -69,16 +70,4 @@ const YouTubeVideo = ({ url }) => {
   );
 };
 
-const MiniPlayer = ({ videoId }) => {
-  const opts = {
-    height: '150',
-    width: '250',
-    playerVars: {
-      autoplay: 0,
-    },
-  };
-
-  return <YouTube videoId={videoId} opts={opts} />;
-};
-
-export default YouTubeVideo;
+export default YtLink;

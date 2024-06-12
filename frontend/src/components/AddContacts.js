@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-react-ui-kit';
 import VerticallyCenteredModal from './CenteredModal';
+import api from '@/utils/api';
 
 function AddContacts({ sendSignal }) {
   const [userData, setUserData] = useState([]);
@@ -11,7 +11,7 @@ function AddContacts({ sendSignal }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      axios.get('http://localhost:8000/api/suggestions/')
+      api.get('http://localhost:8000/api/suggestions/')
         .then(response => {
           console.log('response suggestions', response.data.usersData);
           setUserData(response.data.usersData);

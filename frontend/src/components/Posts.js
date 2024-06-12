@@ -2,11 +2,13 @@
 import React from 'react';
 import YouTubeVideo from './YtLink';
 import SoundCloudTrack from './SoundCloudLink';
+import SpotifyTrack from './SpotyLink';
 
 
 const Post = ({ profilePic, name, body, attachment, link }) => {
   const isSoundCloud = link.includes('soundcloud.com');
   const isYouTube = link.includes('youtube.com');
+  const isSpotify = link.includes('spotify.com');
 
   return (
     <div style={styles.postContainer}>
@@ -18,8 +20,13 @@ const Post = ({ profilePic, name, body, attachment, link }) => {
 
       {isYouTube && <YouTubeVideo url={link} />}
       {isSoundCloud && <SoundCloudTrack url={link} />}
-      {!isYouTube && !isSoundCloud && <a href={link} target="_blank" rel="noopener noreferrer"><p>{link}</p></a>}
-      
+      {isSpotify && <SpotifyTrack url={link} />}
+      {!isYouTube && !isSoundCloud && !isSpotify && (
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <p>{link}</p>
+        </a>
+      )}
+
       {attachment && <img src={attachment} alt="Attachment" style={styles.attachment} />}
       <div style={styles.footer}>
 

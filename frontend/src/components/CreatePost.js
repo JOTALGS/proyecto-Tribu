@@ -9,8 +9,8 @@ const PostInput = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({
-      'content': content,
-      'link': link
+      "content": content,
+      "link": link
     });
     setContent('');
     setLink('');
@@ -22,9 +22,6 @@ const PostInput = ({ onSubmit }) => {
 
   const handleAddLinkClick = () => {
     if (showLinkInput) {
-      onSubmit(content, link);
-      setContent('');
-      setLink('');
       setShowLinkInput(false);
     } else {
       setShowLinkInput(true);
@@ -49,7 +46,7 @@ const PostInput = ({ onSubmit }) => {
         </div>
 
         {showLinkInput && (
-          <div className="px-4 pb-2">
+          <div className="px-4 py-2">
             <Form.Control 
               type="text" 
               value={link} 
