@@ -1,4 +1,5 @@
 'use client'
+import api from '@/utils/api';
 // context/user.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
@@ -26,6 +27,16 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
+  const whenMounted = async () => {
+    try {
+      const response = await api.get(`api/me/`);
+      console.log('user', response.data.user_id)
+      localStorage.setItem('userId', JSON.stringify(response.data.user_id));
+    } catch (error) {
+      console.error(error.response ? error.response.data : error.message);
+    }
+  }
+
   useEffect(() => {
     const accTokens = localStorage.getItem('accessToken');
     const refTokens = localStorage.getItem('refreshToken');
@@ -34,6 +45,7 @@ export const AuthProvider = ({ children }) => {
         setRefreshToken(refTokens);
         setIsAuthenticated(true);
     }
+    whenMounted();
   }, []);
 
   return (

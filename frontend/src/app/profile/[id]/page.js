@@ -25,7 +25,7 @@ const page = ({params}) => {
 
   const whenMounted = async () => {
     try {
-      const response = await api.get(`api/me/${id}`);
+      const response = await api.get(`api/users/${id}`);
       setAbout(response.data.bio)
       setUser(response.data)
       console.log('user', response.data)

@@ -11,7 +11,31 @@ from .models import Profile
 # Create your views here.
 
 @api_view(['GET'])
-def me(request, id):
+def me(request):
+    """
+        devuelve informacion del usuario activo
+    """
+    print(request.user.id)
+    profile = Profile.objects.get(user=request.user.id)
+    print(request.user)
+
+    past_work = PastWorkSerializer(profile.past_works.all(), many=True).data
+    skills = SkillsSerializer(profile.skills.all(), many=True).data
+    user = UserSerializer(profile.user).data
+
+    return JsonResponse({
+        'user_id': request.user.id,
+        'username': user['username'],
+        'bio': profile.bio,
+        'choice': profile.category,
+        'birth': profile.birth_date,
+        'past_work': past_work,
+        'skills': skills,
+    })
+
+
+@api_view(['GET'])
+def users(request, id):
     """
         devuelve informacion del usuario activo
     """
@@ -22,6 +46,7 @@ def me(request, id):
     past_work = PastWorkSerializer(profile.past_works.all(), many=True).data
     skills = SkillsSerializer(profile.skills.all(), many=True).data
     user = UserSerializer(profile.user).data
+
     return JsonResponse({
         'user_id': id,
         'username': user['username'],

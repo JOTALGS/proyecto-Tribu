@@ -10,6 +10,8 @@ import api from '@/utils/api';
 
 const Page = () => {
 
+  const id = localStorage.getItem('userId');
+
   const handleChildData = async (data) => {
     console.log('Data from child:', data);
 
@@ -25,7 +27,7 @@ const Page = () => {
     <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}> 
       <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
         <div style={{ flex: '1' }}>
-          <OffCanvas id="5"/>
+          <OffCanvas id={id}/>
         </div>
         <div className='mx-auto' style={{ flex: '3', maxWidth: 'calc(100% - 700px)' }}>
           <PostInput onSubmit={handleChildData} />
