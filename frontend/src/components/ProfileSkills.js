@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 class ProfileSkills extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class ProfileSkills extends React.Component {
     return (
       <section className="bg-white py-8" style={{ fontFamily: 'Poppins, Open Sans, sans-serif' }}>
         <div className="container mx-auto">
-          <div className="mx-auto flex items-center border" style={{ maxWidth: '70vw', height: '40vh' }}>
+          <div className="mx-auto flex items-center border rounded-lg" style={{ maxWidth: '70vw', height: '40vh' }}>
             <div className="w-full h-full bg-white text-white p-6">
               <h2 className="font-bold text-lg text-black">Skills</h2>
               <div className="flex justify-around">

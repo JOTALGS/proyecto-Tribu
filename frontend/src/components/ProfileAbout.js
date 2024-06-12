@@ -20,7 +20,7 @@ export default function ProfileAbout({ bio }) {
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto">
-        <div className="mx-auto px-8 py-6 bg-white border text-black" style={{ maxWidth: '70vw' }}>
+        <div className="mx-auto px-8 py-6 bg-white border text-black rounded-lg" style={{ maxWidth: '70vw' }}>
           <h2 className="font-bold text-lg">About</h2>
           <div
             style={{
