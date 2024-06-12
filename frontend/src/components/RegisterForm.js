@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '../utils/api';
@@ -15,33 +15,32 @@ const Register = () => {
   const { saveAuthTokens } = useAuth();
 
   const onButtonClick = async () => {
-    console.log('register clicked');
+    console.log('Register clicked');
     const body = {
-      "username": username,
-      "email": email,
-      "password1": password1,
-      "password2": password2
+      username,
+      email,
+      password1,
+      password2,
     };
     try {
-      const response = await api.post('api/signup/', JSON.stringify(body));
-
-      console.log('response:', response.data);
-      // Save tokens to localStorage if needed
+      const response = await api.post('api/signup/', body, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('Response:', response.data);
       saveAuthTokens(response.data);
-
       console.log('Registration successful');
-
-      // Redirect to /home
       router.push('/home');
     } catch (error) {
-      console.log('error');
-      console.error(error.response ? error.response.data : error.message);
-      // Handle and display errors appropriately
+      console.log('Error:', error);
       if (error.response && error.response.data) {
         if (error.response.data.email) setEmailError(error.response.data.email);
         if (error.response.data.password1 || error.response.data.password2) {
           setPasswordError(error.response.data.password1 || error.response.data.password2);
         }
+      } else {
+        console.error(error.message);
       }
     }
   };
