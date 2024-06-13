@@ -26,7 +26,7 @@ const page = ({params}) => {
 
   const whenMounted = async () => {
     try {
-      const response = await api.get(`api/users/${id}/request/`);
+      const response = await api.get(`api/users/${id}/`);
       setAbout(response.data.bio)
       setUser(response.data)
       console.log('user', response.data)
@@ -51,7 +51,7 @@ const page = ({params}) => {
           {tabSelected === 'profile' ? (
             <section>
               <ProfileAbout bio={about}/>
-              <ConnectRequests />
+              <ConnectRequests paramsUserId={id}/>
             </section>
           ) : tabSelected === 'posts' ? (
             <section>

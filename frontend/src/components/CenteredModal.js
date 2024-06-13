@@ -1,15 +1,22 @@
 import api from '@/utils/api';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 function VerticallyCenteredModal({ show, onHide, userData }) {
+  const [requestStatus, setRequestStatus] = useState({});
 
   const sendFriendshipRequest = async (userId) => {
     try {
       const response = await api.post(`api/friends/${userId}/request/`, 'sent');
       // Handle the response as needed
       console.log(`Friendship request sent to user with ID: ${userId}`);
+      
+      // Toggle the request status
+      setRequestStatus(prevStatus => ({
+        ...prevStatus,
+        [userId]: !prevStatus[userId]
+      }));
     } catch (error) {
       console.error(error.response ? error.response.data : error.message);
     }
@@ -78,8 +85,11 @@ function VerticallyCenteredModal({ show, onHide, userData }) {
                     <p className='text-muted mb-0'>{user.category}</p>
                   </td>
                   <td>
-                    <Button variant="outline-success" className="bg-green-500" onClick={() => sendFriendshipRequest(user.user_id)}>
-                        Send request
+                    <Button
+                      variant="outline-success"
+                      onClick={() => sendFriendshipRequest(user.user_id)}
+                    >
+                      {requestStatus[user.user_id] ? "Cancel" : "Send Request"}
                     </Button>
                   </td>
                 </tr>

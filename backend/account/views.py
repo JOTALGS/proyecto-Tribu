@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from .forms import SignupForm, ProfileForm
-from .serializers import UserSerializer, PastWorkSerializer, SkillsSerializer
+from .serializers import UserSerializer, PastWorkSerializer, SkillsSerializer, ProfileSerializer
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from .models import Profile, FriendshipRequest
@@ -29,7 +29,6 @@ def me(request):
         'bio': profile.bio,
         'choice': profile.category,
         'birth': profile.birth_date,
-        'past_work': past_work,
         'skills': skills,
     })
 
@@ -126,16 +125,11 @@ def friends(request, pk):
     profile = Profile.objects.get(pk=pk)
     requests = []
 
-    if user == request.user:
-        requests = FriendshipRequest.objects.filter(created_for=request.user, status=FriendshipRequest.SENT)
-        requests = FriendshipRequestSerializer(requests, many=True)
-        requests = requests.data
-
     friends = profile.friends.all()
 
     return JsonResponse({
-        'user': UserSerializer(user).data,
-        'friends': UserSerializer(friends, many=True).data,
+        'user': request.user.username,
+        'friends': ProfileSerializer(friends, many=True).data,
         'requests': requests
     }, safe=False)
 
@@ -156,16 +150,20 @@ def send_friendship_request(request, pk):
 
     elif request.method == 'GET':
         friendship_requests = FriendshipRequest.objects.filter(created_for=request.user)
-        requests_data = [{'id': fr.id, 'created_by': fr.created_by.id, 'created_at': fr.created_at} for fr in friendship_requests]
-        return JsonResponse({'friendship_requests': requests_data})
+        requests_data = [{'id': fr.id, 'sender_id': fr.created_by.id, 'sender_name': fr.created_by.username, 'created_at': fr.created_at} for fr in friendship_requests]
+        return JsonResponse(requests_data, safe=False)
 
 
 @api_view(['POST'])
 def handle_request(request, pk, status):
-    profile = Profile.objects.get(pk=pk)
-    print('request.user.id', request.user.id)
-    request_profile = Profile.objects.get(pk=request.user.id)
-    friendship_request = FriendshipRequest.objects.filter(created_for=request_profile).get(created_by=profile)
+    user = User.objects.get(pk=pk)
+    profile = Profile.objects.get(user=user)
+    request_user = User.objects.get(pk=request.user.id)
+    request_profile = Profile.objects.get(user=request_user)
+
+    friendship_request = FriendshipRequest.objects.filter(created_for=request_profile.user).get(created_by=profile.user)
+
+    print(friendship_request)
     friendship_request.status = status
     friendship_request.save()
 

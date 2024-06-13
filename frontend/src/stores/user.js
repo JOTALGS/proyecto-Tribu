@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
     setRefreshToken(data.refresh);
     localStorage.setItem('accessToken', JSON.stringify(data.access));
     localStorage.setItem('refreshToken', JSON.stringify(data.refresh));
+    whenMounted();
     setIsAuthenticated(true);
   };
 
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
     setRefreshToken(null);
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('userId');
     setIsAuthenticated(false);
   };
 

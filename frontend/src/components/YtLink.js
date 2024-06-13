@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { fetchYouTubeVideoData } from '../utils/youtube';
 import YouTube from 'react-youtube';
 
-const YtLink = ({ url }) => {
+const YtLink = ({ url, short }) => {
   const [videoData, setVideoData] = useState(null);
   const [videoId, setVideoId] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const videoId = extractVideoId(url);
+    console.log('yt id ', videoId, 'short', short)
     setVideoId(videoId);
     if (videoId) {
       async function getVideoData() {
@@ -20,9 +21,15 @@ const YtLink = ({ url }) => {
   }, [url]);
 
   const extractVideoId = (url) => {
-    const videoIdRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/]+\/*.be\/|embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = url.match(videoIdRegex);
-    return match ? match[1] : null;
+    if (short) {
+      const regex = /(?:\?v=|\/embed\/|\/1watch\?v=|\/\d\/|\/|^)([a-zA-Z0-9_-]{11})/;
+      const matches = url.match(regex);
+      return matches ? matches[1] : null;
+    } else {
+      const videoIdRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/]+\/*.be\/|embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      const match = url.match(videoIdRegex);
+      return match ? match[1] : null;
+    }    
   };
 
   if (!videoData) return <p>Loading...</p>;

@@ -1,41 +1,25 @@
+import api from '@/utils/api';
 import Link from 'next/link';
 import React, { useRef, useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 
-export default function ConnectRequests() {
-    const userData = [
-        {
-          user_id: 1,
-          username: 'JohnDoe',
-          email: 'johndoe@example.com',
-          role: 'Developer',
-          category: 'Technology',
-        },
-        {
-          user_id: 2,
-          username: 'JaneSmith',
-          email: 'janesmith@example.com',
-          role: 'Designer',
-          category: 'Creative',
-        },
-        {
-          user_id: 3,
-          username: 'AliceJohnson',
-          email: 'alicejohnson@example.com',
-          role: 'Project Manager',
-          category: 'Management',
-        },
-      ];
+export default function ConnectRequests({paramsUserId}) {
+  const [userData, setUserData] = useState([])
 
-  const getFriendshipRequest = async (userId) => {
+  const getFriendshipRequest = async () => {
     try {
-      const response = await api.get(`api/friends/${userId}/request/`);
+      const response = await api.get(`api/friends/${paramsUserId}/request/`);
       // Handle the response as needed
-      console.log(`Friendship requests to user with ID: ${userId}`);
+      console.log('respp', response.data);
+      setUserData(response.data)
     } catch (error) {
       console.error(error.response ? error.response.data : error.message);
     }
   };
+
+  useEffect(() => {
+    getFriendshipRequest();
+  }, []);
 
   const handleFriendshipRequest = async (userId) => {
     try {
@@ -71,9 +55,8 @@ export default function ConnectRequests() {
                             className='rounded-circle'
                         />
                         <div className='ms-3'>
-                            <Link href={`/profile/${user.user_id}`} key={index} passHref>
-                            <p className='fw-bold mb-1'>{user.username}</p>
-                            <p className='text-muted mb-0'>{user.email}</p>
+                            <Link href={`/profile/${user.sender_id}`} key={index} passHref>
+                              <p className='fw-bold mb-1'>{user.sender_name}</p>
                             </Link>
                         </div>
                         </div>
@@ -83,7 +66,7 @@ export default function ConnectRequests() {
                         <p className='text-muted mb-0'>{user.category}</p>
                     </td>
                     <td>
-                        <Button variant="outline-success" className="bg-green-500" onClick={() => handleFriendshipRequest(user.user_id)}>
+                        <Button variant="outline-success" className="bg-green-500" onClick={() => handleFriendshipRequest(user.sender_id)}>
                             Connect
                         </Button>
                     </td>

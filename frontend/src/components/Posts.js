@@ -8,6 +8,7 @@ import SpotifyTrack from './SpotyLink';
 const Post = ({ profilePic, name, body, attachment, link }) => {
   const isSoundCloud = link.includes('soundcloud.com');
   const isYouTube = link.includes('youtube.com');
+  const isYouTu = link.includes('youtu.be');
   const isSpotify = link.includes('spotify.com');
 
   return (
@@ -18,10 +19,11 @@ const Post = ({ profilePic, name, body, attachment, link }) => {
       </div>
       <div style={styles.body}>{body}</div>
 
-      {isYouTube && <YouTubeVideo url={link} />}
+      {isYouTube && <YouTubeVideo url={link} short={false}/>}
+      {isYouTu && <YouTubeVideo url={link} short={true}/>}
       {isSoundCloud && <SoundCloudTrack url={link} />}
       {isSpotify && <SpotifyTrack url={link} />}
-      {!isYouTube && !isSoundCloud && !isSpotify && (
+      {!isYouTube && !isSoundCloud && !isSpotify && !isYouTu && (
         <a href={link} target="_blank" rel="noopener noreferrer">
           <p>{link}</p>
         </a>
