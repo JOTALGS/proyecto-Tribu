@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const EditProfile = () => {
-  const [profilePic, setProfilePic] = useState('');
+  const [profilePic, setProfilePic] = useState(null);
   const [username, setUsername] = useState('');
   const [links, setLinks] = useState(['']);
   const [city, setCity] = useState('');
@@ -11,11 +12,7 @@ const EditProfile = () => {
   const handleProfilePicChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfilePic(reader.result);
-      };
-      reader.readAsDataURL(file);
+      setProfilePic(file);
     }
   };
 
@@ -33,17 +30,28 @@ const EditProfile = () => {
     setRole(selectedRole);
   };
 
-  const handleSave = () => {
-    const profileData = {
-      profilePic,
-      username,
-      links,
-      city,
-      role,
-      bio,
-    };
-    console.log(profileData);
-    // api.saveProfile(profileData);
+  const handleSave = async () => {
+    const formData = new FormData();
+    formData.append('profilePic', profilePic);
+    formData.append('username', username);
+    formData.append('city', city);
+    formData.append('role', role);
+    formData.append('bio', bio);
+
+    links.forEach((link, index) => {
+      formData.append(`links[${index}]`, link);
+    });
+
+    try {
+      const response = await axios.post('/api/edit_profile/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
   };
 
   return (
@@ -53,7 +61,7 @@ const EditProfile = () => {
       <div className="profile-pic-section mb-4">
         <label className="block font-semibold mb-2">Profile Photo</label>
         <div className="profile-pic-preview mb-2">
-          {profilePic && <img src={profilePic} alt="Profile" className="rounded-full w-16 h-16 object-cover" />}
+          {profilePic && <img src={URL.createObjectURL(profilePic)} alt="Profile" className="rounded-full w-16 h-16 object-cover" />}
         </div>
         <input
           type="file"

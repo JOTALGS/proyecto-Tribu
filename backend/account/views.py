@@ -6,7 +6,10 @@ from .serializers import UserSerializer, PastWorkSerializer, SkillsSerializer, P
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from .models import Profile, FriendshipRequest
-
+from rest_framework.decorators import parser_classes
+from rest_framework.parsers import MultiPartParser, FormParser
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from .models import Profile
 
 # Create your views here.
 
@@ -174,3 +177,34 @@ def handle_request(request, pk, status):
     request_user.save()
 
     return JsonResponse({'message': 'friendship request updated'})
+
+    ##vista settings 
+
+@api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser])
+def edit_profile(request):
+    """
+    edit profile
+    """
+    user = request.user
+    profile = Profile.objects.get(user=user)
+
+    data = request.data
+
+    profile.bio = data.get('bio', profile.bio)
+    profile.city = data.get('city', profile.city)
+    profile.category = data.get('role', profile.category)
+    
+    if 'profilePic' in data and isinstance(data['profilePic'], InMemoryUploadedFile):
+        profile.profile_picture = data['profilePic']
+
+    profile.links = data.getlist('links[]', profile.links)
+
+    user.username = data.get('username', user.username)
+
+    profile.save()
+    user.save()
+
+    return JsonResponse({'message': 'Profile updated successfully'})
+
+
