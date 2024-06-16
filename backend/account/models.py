@@ -15,7 +15,8 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     category = models.CharField(max_length=10, choices=USER_CATEGORIES, default='musician')
     profile_picture = models.ImageField(upload_to='profile_pics', blank=True)
-    links = models.JSONField(default=list, blank=True)ends = models.ManyToManyField('self')
+    links = models.JSONField(default=list, blank=True)
+    friends = models.ManyToManyField('self')
 
     def __str__(self):
         return self.user.username

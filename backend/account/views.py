@@ -181,29 +181,34 @@ def handle_request(request, pk, status):
     ##vista settings 
 
 @api_view(['POST'])
-@parser_classes([MultiPartParser, FormParser])
 def edit_profile(request):
     """
     edit profile
     """
-    user = request.user
-    profile = Profile.objects.get(user=user)
+    try:
+        print('user', request.user)
+        user = request.user
+        profile = Profile.objects.get(user=user)
 
-    data = request.data
+        data = request.data
+        print(data)
+        profile.bio = data.get('bio', profile.bio)
+        profile.city = data.get('city', profile.city)
+        profile.category = data.get('role', profile.category)
+        
+        if 'profilePic' in data and isinstance(data['profilePic'], InMemoryUploadedFile):
+            profile.profile_picture = data['profilePic']
 
-    profile.bio = data.get('bio', profile.bio)
-    profile.city = data.get('city', profile.city)
-    profile.category = data.get('role', profile.category)
-    
-    if 'profilePic' in data and isinstance(data['profilePic'], InMemoryUploadedFile):
-        profile.profile_picture = data['profilePic']
+        print(data.get('links'))
+        profile.links = data.get('links')
 
-    profile.links = data.getlist('links[]', profile.links)
+        user.username = data.get('username', user.username)
 
-    user.username = data.get('username', user.username)
+        profile.save()
+        user.save()
+    except Exception as e:
+        return JsonResponse({'message': 'error updated prodile'})
 
-    profile.save()
-    user.save()
 
     return JsonResponse({'message': 'Profile updated successfully'})
 
