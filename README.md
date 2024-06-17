@@ -1,7 +1,7 @@
 ![Logo](frontend/public/images/logo.png)
 
 # TRIBU
-TRIBU is a social network, made to conect artists with producers within the music industry.
+Tribu is a tool directed to workers in the music industry with a special emphasis on promoting productivity through the generation of connections and collaboration between music industry members.
 This project was made as the final project for Foundations of computer science in Holberton Uruguay.
 
 ### Technologies Used
