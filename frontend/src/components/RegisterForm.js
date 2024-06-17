@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '../utils/api';
 import { useAuth } from '../stores/user';
+import { Button, Form } from 'react-bootstrap';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -92,12 +93,9 @@ const Register = () => {
             {passwordError && <label className="text-red-500 text-sm">{passwordError}</label>}
           </div>
           <div>
-            <button
-              onClick={onButtonClick}
-              className="w-full px-4 py-2 font-bold text-white bg-green-500 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-            >
-              Go to TRIBU
-            </button>
+          <Button onClick={onButtonClick}  variant="success" className="py-2 px-4 rounded-md">Go to TRIBU</Button>
+              
+      
           </div>
         </div>
       </div>
