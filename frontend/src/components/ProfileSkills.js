@@ -18,8 +18,16 @@ class ProfileSkills extends React.Component {
     return (
       <section className="bg-white py-8" style={{ fontFamily: 'Poppins, Open Sans, sans-serif' }}>
         <div className="container mx-auto">
-          <div className="mx-auto flex items-center border rounded-lg" style={{ maxWidth: '70vw', height: '40vh' }}>
-            <div className="w-full h-full bg-white text-white p-6">
+          <div
+            className="mx-auto flex items-center border rounded-lg"
+            style={{ 
+              maxWidth: '70vw', 
+              height: '40vh',
+              borderRadius: '15px', // Redondear los bordes aquí
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' // Agregar sombra aquí
+            }}
+          >
+            <div className="w-full h-full bg-white text-white p-6" style={{ borderRadius: '15px' }}>
               <h2 className="font-bold text-lg text-black">Skills</h2>
               <div className="flex justify-around">
                 <div className="placeholder rounded-full w-24 h-24 bg-gray-300 flex justify-center items-center">
