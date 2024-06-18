@@ -2,7 +2,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PastWorkCard from './PastWorkCard';
 
-export default function MyWork() {
+export default function MyWork({pastWork}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const contentRef = useRef(null);
   const containerRef = useRef(null);
@@ -86,24 +86,11 @@ export default function MyWork() {
               ref={containerRef}
               className="hide-scrollbar"
             >
+              {pastWork.map(work => (
               <div style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
-                <PastWorkCard />
+                <PastWorkCard work={work}/>
               </div>
-              <div style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
-                <PastWorkCard />
-              </div>
-              <div style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
-                <PastWorkCard />
-              </div>
-              <div style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
-                <PastWorkCard />
-              </div>
-              <div style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
-                <PastWorkCard />
-              </div>
-              <div style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
-                <PastWorkCard />
-              </div>
+              ))}
             </div>
             {hasOverflow && (
               <button

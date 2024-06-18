@@ -18,6 +18,7 @@ const Login = () => {
       "username": username,
       "password": password
     };
+    console.log(body)
     try {
       const response = await api.post('api/login/', JSON.stringify(body));
 

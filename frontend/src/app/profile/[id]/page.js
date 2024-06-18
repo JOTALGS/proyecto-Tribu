@@ -13,6 +13,8 @@ import ConnectRequests from '@/components/ConnectRequests'
 const page = ({params}) => {
   const [tabSelected, setTabSelected] = useState('profile');
   const [about, setAbout] = useState('');
+  const [pastWork, setPastWork] = useState('');
+  const [skills, setSkills] = useState('');
   const [user, setUser] = useState('');
 
   const { id } = params
@@ -28,6 +30,8 @@ const page = ({params}) => {
     try {
       const response = await api.get(`api/users/${id}/`);
       setAbout(response.data.bio)
+      setPastWork(response.data.past_work)
+      setSkills(response.data.skills)
       setUser(response.data)
       console.log('user', response.data)
     } catch (error) {
@@ -55,8 +59,8 @@ const page = ({params}) => {
             </section>
           ) : tabSelected === 'posts' ? (
             <section>
-              <MyWork/>
-              <ProfileSkills/>
+              <MyWork pastWork={pastWork}/>
+              <ProfileSkills skills={skills}/>
             </section>
           ) : (
             <p>Default Content</p>

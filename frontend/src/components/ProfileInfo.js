@@ -6,7 +6,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 
 
-function Contacto() {
+function Contacto({user}) {
   return (
     <div style={{ 
       width: '100%', 
@@ -27,11 +27,11 @@ function Contacto() {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
           <FontAwesomeIcon icon={faEnvelope} style={{ marginRight: '10px' }} />
-          <span>ejemplo@gmail.com</span>
+          <span>{user.email}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <FontAwesomeIcon icon={faLink} style={{ marginRight: '10px' }} />
-          <span><a href="https://example.com">https://example.com</a></span>
+          <span><a href={user.links}>{user.links}</a></span>
         </div>
       </div>
     </div>
@@ -78,8 +78,8 @@ export default function ProfilePage({ tabData, user }) {
             </div>
             <div style={{ flex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem' }}>
               <p>{user.username}</p>
-              <p className="text-gray-500 mb-1">Productor {user.choice}</p>
-              <p className="text-gray-500 mb-4">Montevideo, UY</p>
+              <p className="text-gray-500 mb-1">{user.choice}</p>
+              <p className="text-gray-500 mb-4">{user.city}</p>
             </div>
           </div>
           <div className="ml-36 my-2" style={{ width: '45vw' }}>
@@ -102,7 +102,7 @@ export default function ProfilePage({ tabData, user }) {
         </div>
         <div className="border flex items-center ml-1 rounded-lg" style={{ width: '45vw', height: '100%' }}>
           <div className="mx-auto my-2" style={{ width: '100%', height: '100%' }}>
-            <Contacto />
+            <Contacto user={user} />
           </div>
         </div>
       </div>

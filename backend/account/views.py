@@ -53,6 +53,8 @@ def users(request, id):
         'user_id': id,
         'username': user['username'],
         'bio': profile.bio,
+        'city': profile.city,
+        'links': profile.links,
         'choice': profile.category,
         'birth': profile.birth_date,
         'past_work': past_work,
