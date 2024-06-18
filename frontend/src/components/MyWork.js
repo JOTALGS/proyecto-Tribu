@@ -3,6 +3,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import PastWorkCard from './PastWorkCard';
 
 export default function MyWork({pastWork}) {
+  // Asegúrate de que pastWork es un arreglo
+  if (!Array.isArray(pastWork)) {
+    pastWork = [];
+  }
+
   const [isExpanded, setIsExpanded] = useState(false);
   const contentRef = useRef(null);
   const containerRef = useRef(null);
@@ -86,10 +91,10 @@ export default function MyWork({pastWork}) {
               ref={containerRef}
               className="hide-scrollbar"
             >
-              {pastWork.map(work => (
-              <div style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
-                <PastWorkCard work={work}/>
-              </div>
+              {pastWork.map((work, index) => (
+                <div key={index} style={{ flex: '0 0 auto', width: 'calc(33.33% - 1rem)', minWidth: '200px' }}>
+                  <PastWorkCard work={work}/>
+                </div>
               ))}
             </div>
             {hasOverflow && (
