@@ -7,7 +7,7 @@ import uuid
 class Profile(models.Model):
     USER_CATEGORIES = [
         ('musician', 'Musician'),
-        ('productor', 'Productor'),
+        ('producer', 'Producer'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
