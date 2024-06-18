@@ -32,6 +32,7 @@ def me(request):
         'bio': profile.bio,
         'choice': profile.category,
         'birth': profile.birth_date,
+        'image': profile.profile_picture.url,
         'skills': skills,
     })
 
@@ -57,6 +58,7 @@ def users(request, id):
         'links': profile.links,
         'choice': profile.category,
         'birth': profile.birth_date,
+        'image': profile.profile_picture.url,
         'past_work': past_work,
         'skills': skills,
     })
@@ -112,13 +114,18 @@ def suggest_users(request):
     user_data = []
 
     for user in users:
-        profile = Profile.objects.get(user=user)
-        user_data.append({
-            'user_id': user.id,
-            'username': user.username,
-            'role': profile.category,
-            'email': user.email  # Incluye el correo electrónico
-        })
+        try:
+            profile = Profile.objects.get(user=user)
+            print(profile.profile_picture.url)
+            user_data.append({
+                'user_id': user.id,
+                'username': user.username,
+                'role': profile.category,
+                'image': profile.profile_picture.url,
+                'email': user.email  # Incluye el correo electrónico
+            })
+        except Exception as e:
+            print(e)
 
     return JsonResponse({
         'usersData': user_data

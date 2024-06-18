@@ -4,14 +4,15 @@ import { MDBContainer, MDBTable, MDBTableHead, MDBTableBody, MDBBtn } from 'mdb-
 import VerticallyCenteredModal from './CenteredModal';
 import api from '@/utils/api';
 
+const BASE_URL = 'http://localhost:8000'; // Define the base URL
+
 function AddContacts({ sendSignal }) {
   const [userData, setUserData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
 
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      api.get('http://localhost:8000/api/suggestions/')
+      api.get(`${BASE_URL}/api/suggestions/`)
         .then(response => {
           console.log('response suggestions', response.data.usersData);
           setUserData(response.data.usersData);
@@ -55,11 +56,11 @@ function AddContacts({ sendSignal }) {
               </MDBTableHead>
               <MDBTableBody>
                 {userData.map((user, index) => (
-                  <tr style={{ cursor: 'pointer' }}>
+                  <tr key={index} style={{ cursor: 'pointer' }}>
                     <td className="align-middle">
                       <div className='d-flex align-items-center'>
                         <img
-                          src='https://via.placeholder.com/200x100'
+                          src={`${BASE_URL}${user.image}`} // Use the base URL here
                           alt=''
                           style={{ width: '45px', height: '45px' }}
                           className='rounded-circle'
@@ -82,10 +83,10 @@ function AddContacts({ sendSignal }) {
         </div>
 
         <VerticallyCenteredModal 
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            userData={userData}
-            />
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          userData={userData}
+        />
       </section>
     </MDBContainer>
   );
