@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import PastWorkCard from './PastWorkCard';
 
 export default function MyWork({pastWork}) {
-  // Asegúrate de que pastWork es un arreglo
+  // asegurar de que pastWork es un arreglo
   if (!Array.isArray(pastWork)) {
     pastWork = [];
   }

@@ -3,6 +3,8 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
+const BASE_URL = 'http://localhost:8000'; // Define the base URL
+
 function VerticallyCenteredModal({ show, onHide, userData }) {
   const [requestStatus, setRequestStatus] = useState({});
 
@@ -67,7 +69,7 @@ function VerticallyCenteredModal({ show, onHide, userData }) {
                   <td className="align-middle">
                     <div className='d-flex align-items-center'>
                       <img
-                        src='https://via.placeholder.com/200x100'
+                        src={`${BASE_URL}${user.image}`}
                         alt=''
                         style={{ width: '45px', height: '45px' }}
                         className='rounded-circle'

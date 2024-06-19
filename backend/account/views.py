@@ -53,6 +53,7 @@ def users(request, id):
     return JsonResponse({
         'user_id': id,
         'username': user['username'],
+        'email': user['email'],
         'bio': profile.bio,
         'city': profile.city,
         'links': profile.links,
@@ -116,14 +117,15 @@ def suggest_users(request):
     for user in users:
         try:
             profile = Profile.objects.get(user=user)
-            print(profile.profile_picture.url)
-            user_data.append({
-                'user_id': user.id,
-                'username': user.username,
-                'role': profile.category,
-                'image': profile.profile_picture.url,
-                'email': user.email  # Incluye el correo electrónico
-            })
+            print(request.user.profile.category)
+            if profile not in request.user.profile.friends.all() and profile != request.user.profile and request.user.profile.category != profile.category:
+                user_data.append({
+                    'user_id': user.id,
+                    'username': user.username,
+                    'role': profile.category,
+                    'image': profile.profile_picture.url,
+                    'email': user.email  # Incluye el correo electrónico
+                })
         except Exception as e:
             print(e)
 
