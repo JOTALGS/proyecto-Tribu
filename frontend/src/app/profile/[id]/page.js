@@ -8,6 +8,7 @@ import api from '@/utils/api'
 import ProfileSkills from '@/components/ProfileSkills'
 import MyWork from '@/components/MyWork'
 import ConnectRequests from '@/components/ConnectRequests'
+import Navbar from '@/components/Navbar';
 
 
 const page = ({params}) => {
@@ -46,6 +47,7 @@ const page = ({params}) => {
 
   return (
     <div className='shadow-lg'>
+      <Navbar />
       <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
         <div style={{ flex: '1' }}>
           <OffCanvas id={user.user_id} />

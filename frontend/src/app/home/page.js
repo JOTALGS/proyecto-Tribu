@@ -6,6 +6,7 @@ import PostContainer from '@/components/PostContainer';
 import Footer from '@/components/Footer';
 import AddContacts from '@/components/AddContacts';
 import api from '@/utils/api';
+import Navbar from '../../components/Navbar';
 
 
 const Page = () => {
@@ -24,7 +25,8 @@ const Page = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}> 
+    <div style={{ backgroundColor: '#fff', minHeight: '100vh' }}>
+      <Navbar />
       <div style={{ display: 'flex', flex: '1', minHeight: '100%' }}>
         <div style={{ flex: '1' }}>
           <OffCanvas id={id}/>

@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <div className="w-full h-20 bg-green-700 sticky top-0">
       <div className="px-1 h-full w-full flex items-center justify-between">
-        <Link href="/">
+        <Link href="/home">
           <img
             width={230}
             height={70}

@@ -2,6 +2,7 @@
 import React from 'react';
 import Register from '../../components/RegisterForm';
 import Footer from '../../components/Footer';
+import Navbar from '@/components/Navbar';
 
 
 const Page = () => {
@@ -9,7 +10,7 @@ const Page = () => {
 
     
     <div>
-    
+    <Navbar />
     <Register/>
     <Footer />
     </div>
