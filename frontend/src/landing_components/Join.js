@@ -13,17 +13,6 @@ import { motion } from "framer-motion";
 function Join() {
   return (
     <div className="join">
-      <motion.div
-        initial={{ x: -200 }}
-        whileInView={{ x: 35 }}
-        transition={{ duration: 0.8 }}
-        className="pt-5"
-      >
-        <AnimationTitles
-          title="Our developers team:"
-          className="text-white mt-5 h4"
-        />
-      </motion.div>
       <Container className="mt-5">
         <motion.div
           initial={{ opacity: 0 }}
