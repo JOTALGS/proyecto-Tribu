@@ -40,59 +40,6 @@ function Properties() {
         />
         {/* Start tabs */}
         <div className="tabs d-flex justify-content-start justify-content-sm-center align-items-center flex-nowrap w-lg-50">
-          <Swiper
-            className="mySwiper overflow-none"
-            grabCursor={true}
-            spaceBetween={15}
-            slidesPerView={6}
-            breakpoints={{
-              0: {
-                slidesPerView: 3,
-              },
-              768: {
-                slidesPerView: 6,
-              },
-            }}
-          >
-            <SwiperSlide>
-              <Button className="ms-0 bg-black-100 border-0" onClick={active}>
-                All
-              </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Button
-                className="ms-0 bg-black-100 border-0 active"
-                onClick={active}
-              >
-                Cottage
-              </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Button className="ms-0 bg-black-100 border-0" onClick={active}>
-                Chalet
-              </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Button className="ms-0 bg-black-100 border-0" onClick={active}>
-                Manor
-              </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Button className="ms-0 bg-black-100 border-0" onClick={active}>
-                Penthouse
-              </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Button className="ms-0 bg-black-100 border-0" onClick={active}>
-                Farmhouse
-              </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Button className="ms-0 bg-black-100 border-0" onClick={active}>
-                Duplex
-              </Button>
-            </SwiperSlide>
-          </Swiper>
         </div>
         {/* End tabs */}
         {/* Start cards */}
@@ -144,17 +91,17 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">
+                  <h5 className="mt-2 fw-normal">
                     Cottage «Forrest 1»
                   </h5>
                   <p className="gray-90">@Red Oak Realty</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={9} m={45} s={8} />
-                      <span className="gray-90">Remaining Time</span>
+                    <h6 className="">text</h6>
+                    <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">29.71 ETH</h6>
+                      <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -177,15 +124,15 @@ function Properties() {
                       onClick={like}
                     ></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Freshness</h5>
+                  <h5 className="mt-2 fw-normal">Freshness</h5>
                   <p className="gray-90">@ERA Ukraine Real Estate</p>
-                  <div className="d-flex">
+                  <div className="d-flex text-black">
                     <div className="me-3">
-                      <CountDown h={29} m={15} s={10} />
+                      <h6 className="">text</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">14.81 ETH</h6>
+                      <h6 className="">14.81 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -205,15 +152,15 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Wish house</h5>
+                  <h5 className="mt-2 fw-normal">Wish house</h5>
                   <p className="gray-90">@UA real estate agency</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={23} m={6} s={1} />
-                      <span className="gray-90">Remaining Time</span>
+                    <h6 className="">text</h6>
+                    <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">16.62 ETH</h6>
+                      <h6 className="">16.62 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -233,15 +180,15 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Spruce</h5>
+                  <h5 className="mt-2 fw-normal">Spruce</h5>
                   <p className="gray-90">@Dream House</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={10} m={30} s={58} />
+                      <h6 className="">text</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">17.01 ETH</h6>
+                      <h6 className="">17.01 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -261,15 +208,15 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Residence Rybna</h5>
+                  <h5 className="mt-2 fw-normal">Residence Rybna</h5>
                   <p className="gray-90">@UA real estate agency</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={18} m={21} s={8} />
+                      <h6 className="">text</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">29.71 ETH</h6>
+                      <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -289,15 +236,15 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Blue Sky</h5>
+                  <h5 className="mt-2 fw-normal">Blue Sky</h5>
                   <p className="gray-90">@ERA Ukraine Real Estate</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={23} m={16} s={11} />
+                    <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">17.31 ETH</h6>
+                      <h6 className="e">17.31 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -317,17 +264,17 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">
+                  <h5 className="mt-2 fw-normal">
                     Cottage «Forrest 1»
                   </h5>
                   <p className="gray-90">@Red Oak Realty</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={9} m={45} s={8} />
+                    <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">29.71 ETH</h6>
+                      <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -350,15 +297,15 @@ function Properties() {
                       onClick={like}
                     ></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Freshness</h5>
+                  <h5 className="mt-2 fw-normal">Freshness</h5>
                   <p className="gray-90">@ERA Ukraine Real Estate</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={29} m={15} s={10} />
+                    <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">14.81 ETH</h6>
+                      <h6 className="">14.81 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -378,15 +325,15 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Wish house</h5>
+                  <h5 className="mt-2 fw-normal">Wish house</h5>
                   <p className="gray-90">@UA real estate agency</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={23} m={6} s={1} />
+                    <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">16.62 ETH</h6>
+                      <h6 className="">16.62 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>
@@ -406,71 +353,15 @@ function Properties() {
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>
-                  <h5 className="mt-2 text-white fw-normal">Spruce</h5>
+                  <h5 className="mt-2 fw-normal">Spruce</h5>
                   <p className="gray-90">@Dream House</p>
                   <div className="d-flex">
                     <div className="me-3">
-                      <CountDown h={10} m={30} s={58} />
+                      <h6 className="">29.71 ETH</h6>
                       <span className="gray-90">Remaining Time</span>
                     </div>
                     <div>
-                      <h6 className="text-white">17.01 ETH</h6>
-                      <span className="gray-90">Current Bid</span>
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              {" "}
-              <Card className="bg-black-100 rounded">
-                <Card.Body className="p-2">
-                  <div className="rounded overflow-hidden position-relative">
-                    <Card.Img
-                      variant="top"
-                      alt="img"
-                      src="https://via.placeholder.com/150"
-                      //src={require("../images/properties/house_big-1.webp")}
-                    />
-                    <i className="fa-regular fa-heart like" onClick={like}></i>
-                  </div>
-                  <h5 className="mt-2 text-white fw-normal">Residence Rybna</h5>
-                  <p className="gray-90">@UA real estate agency</p>
-                  <div className="d-flex">
-                    <div className="me-3">
-                      <CountDown h={18} m={21} s={8} />
-                      <span className="gray-90">Remaining Time</span>
-                    </div>
-                    <div>
-                      <h6 className="text-white">29.71 ETH</h6>
-                      <span className="gray-90">Current Bid</span>
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
-            </SwiperSlide>
-            <SwiperSlide>
-              {" "}
-              <Card className="bg-black-100 rounded">
-                <Card.Body className="p-2">
-                  <div className="rounded overflow-hidden position-relative">
-                    <Card.Img
-                      variant="top"
-                      alt="img"
-                      src="https://via.placeholder.com/150"
-                      //src={require("../images/properties/house_big.webp")}
-                    />
-                    <i className="fa-regular fa-heart like" onClick={like}></i>
-                  </div>
-                  <h5 className="mt-2 text-white fw-normal">Blue Sky</h5>
-                  <p className="gray-90">@ERA Ukraine Real Estate</p>
-                  <div className="d-flex">
-                    <div className="me-3">
-                      <CountDown h={23} m={16} s={11} />
-                      <span className="gray-90">Remaining Time</span>
-                    </div>
-                    <div>
-                      <h6 className="text-white">17.31 ETH</h6>
+                      <h6 className="">17.01 ETH</h6>
                       <span className="gray-90">Current Bid</span>
                     </div>
                   </div>

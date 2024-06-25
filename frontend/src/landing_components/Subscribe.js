@@ -1,24 +1,23 @@
 'use client'
 import { Button, Container } from "react-bootstrap";
 import AnimationTitles from "../components/functions/AnimationTitles";
+import Link from "next/link";
 
 function Subscribe() {
   return (
     <div className="subscribe">
-      <Container>
+      <Container className="mt-1">
         <AnimationTitles
-          title={`Subscribe to get fresh news update about our properties`}
+          title={`Join our community`}
           className="title text-center mx-auto w-75"
         />
         <p className="gray-50 text-center mt-3 mb-5">
-          Stay up to date with ProHouse or get involved in our community
+          Join the TRIBU experience the community
         </p>
-        <div className="d-flex justify-content-between align-items-center mx-auto p-1">
-          <input
-            placeholder="Enter Your Email"
-            className="bg-transparent border-0 text-white ps-1 w-100"
-          />
-          <Button className="m-0">Subscribe</Button>
+        <div className="d-flex justify-content-center align-items-center mx-auto p-1 border-0">
+          <Link href="/register">
+            <button className="m-0 my-3 px-1 py-2 fs-5 fw-bold">Join the Tribu</button>
+          </Link>
         </div>
       </Container>
     </div>

@@ -1,11 +1,12 @@
 'use client'
 import { Container } from "react-bootstrap";
-import { Link } from "next/link";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import logo from "../../public/images/logo.png";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="w-full">
       <Container>
         <div className="d-flex justify-content-between flex-column flex-md-row flex-wrap pt-5 pb-4">
           <motion.div
@@ -14,7 +15,7 @@ function Footer() {
             transition={{ duration: 0.8 }}
           >
             <img
-              src="https://via.placeholder.com/150"
+              src={logo.src}
               //src={require("../images/logo/logo.png")}
               alt="logo"
               className="mb-3"
@@ -22,7 +23,7 @@ function Footer() {
             <p className="gray-100">
               Please contact us if you have any specific <br /> idea or request.
             </p>
-            <Link className="link-primary link-underline-opacity-0" to={""}>
+            <Link className="link-primary link-underline-opacity-0" href="#">
               info@revend.group
             </Link>
           </motion.div>
@@ -61,11 +62,11 @@ function Footer() {
           transition={{ duration: 0.8 }}
           className="d-flex justify-content-between flex-column flex-md-row flex-wrap gray-100 pt-3"
         >
-          <p>© 2023 ProHouse. All rights reserved</p>
+          <p>© 2024 TRIBU. All rights reserved</p>
           <p>
             Design by{" "}
-            <Link className="link-primary link-underline-opacity-0" to={""}>
-              Revend
+            <Link className="link-primary link-underline-opacity-0" href="#">
+              J|S
             </Link>
           </p>
         </motion.div>

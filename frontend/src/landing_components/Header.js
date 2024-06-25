@@ -31,14 +31,10 @@ function Loading() {
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <AnimationTitles title="Future of real estate investing" />
+          <AnimationTitles title="TRIBU - Helping Artists Connect" />
           <p className="gray-90 mt-3 fs-5">
-            Our real estate is virtual property you can purchase on a metaverse
-            platform
+            TRIBU - A platform for music artists to connect, collaborate, and showcase their work.
           </p>
-          <Link href="/login">
-            <button className="m-0 my-3 px-5 py-2 fs-5 fw-bold">Explore</button>
-          </Link>
           <div
             style={{ color: "white" }}
             className="d-none d-md-flex justify-content-between align-items-center my-4"
