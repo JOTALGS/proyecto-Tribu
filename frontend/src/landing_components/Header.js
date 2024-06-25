@@ -37,9 +37,6 @@ function Loading() {
             Tribu is a productivity tool for professionals in the music industry,
             facilitating connections and collaborations.
           </p>
-          <Link href="/login">
-            <button className="m-0 my-3 px-5 py-2 fs-5 fw-bold">Explore</button>
-          </Link>
           <div
             style={{ color: "white" }}
             className="d-none d-md-flex justify-content-between align-items-center my-4"

@@ -386,7 +386,8 @@ body {
 }
 
 .developers .swiper .swiper-slide div {
-  border: 1px solid var(--gray-150);
+  border: 1px solid; /* Ajusta el ancho del borde según sea necesario */
+  border-image: linear-gradient(to right, #3a003a, #410041, #000000) 1;
   border-radius: 100px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -415,7 +416,8 @@ body {
 }
 
 .join .mySwiper .swiper-wrapper .swiper-slide {
-  border: 1px solid #3d4467;
+  border: 1px solid; /* Ajusta el ancho del borde según sea necesario */
+  border-image: linear-gradient(to right, #5f005f, #920092, #ff4da6) 1;
   border-radius: 12px;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
@@ -485,7 +487,7 @@ body {
 /* Start footer */
 
 footer {
-  border-top: 1px solid #3d4467;
+  border-top: 1px solid #4c005c;
   overflow-x: clip;
 }
 
