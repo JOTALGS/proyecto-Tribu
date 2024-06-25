@@ -30,6 +30,21 @@ const PostInput = ({ onSubmit }) => {
     setLink(e.target.value);
   };
 
+  const buttonStyle = {
+    backgroundColor: '#030712',
+    borderColor: '#030712',
+    borderRadius: '5px',
+    padding: '0.5em 1em',
+    color: '#e75480',
+    transition: 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease',
+  };
+
+  const buttonHoverStyle = {
+    backgroundColor: '#e75480',
+    borderColor: '#e75480',
+    color: '#030712',
+  };
+
   return (
     <div
       className="bg-white border border-gray-300 rounded-lg mx-auto mt-2"
@@ -49,7 +64,6 @@ const PostInput = ({ onSubmit }) => {
             className="p-4 w-full bg-gray-100 border border-gray-300 rounded-t-lg"
             placeholder="What are you thinking about?"
             style={{
-              border: '1px solid #ccc',
               borderRadius: '8px 8px 0 0',
               boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1)',
             }}
@@ -65,7 +79,6 @@ const PostInput = ({ onSubmit }) => {
               className="p-2 w-full bg-gray-100 border border-gray-300 rounded-lg"
               placeholder="Enter link here"
               style={{
-                border: '1px solid #ccc',
                 boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1)',
               }}
             />
@@ -77,15 +90,9 @@ const PostInput = ({ onSubmit }) => {
             variant="success"
             className="text-white"
             onClick={handleAddLinkClick}
-            style={{
-              backgroundColor: '#28a745',
-              borderColor: '#28a745',
-              borderRadius: '5px',
-              padding: '0.5em 1em',
-              transition: 'background-color 0.3s ease',
-            }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = '#218838')}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = '#28a745')}
+            style={buttonStyle}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#e75480')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#030712')}
           >
             {showLinkInput ? 'Close Link' : 'Add Link'}
           </Button>
@@ -93,15 +100,9 @@ const PostInput = ({ onSubmit }) => {
             variant="success"
             className="text-white"
             type="submit"
-            style={{
-              backgroundColor: '#28a745',
-              borderColor: '#28a745',
-              borderRadius: '5px',
-              padding: '0.5em 1em',
-              transition: 'background-color 0.3s ease',
-            }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = '#218838')}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = '#28a745')}
+            style={buttonStyle}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#e75480')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#030712')}
           >
             Post
           </Button>

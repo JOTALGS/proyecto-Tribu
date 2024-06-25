@@ -12,7 +12,7 @@ function AboutUs() {
           whileInView={{ x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <AnimationTitles title="What is ProHouse?" className="title" />
+          <AnimationTitles title="What is TRIBU?" className="title" />
           <p className="gray-50 mb-5">
             As new technologies like cryptocurrency develop, the real estate
             sector is changing drastically. It is important to understand both

@@ -11,7 +11,7 @@ function Subscribe() {
           className="title text-center mx-auto w-75"
         />
         <p className="gray-50 text-center mt-3 mb-5">
-          Stay up to date with ProHouse or get involved in our community
+          Stay up to date with TRIBU or get involved in our community
         </p>
         <div className="d-flex justify-content-between align-items-center mx-auto p-1">
           <input

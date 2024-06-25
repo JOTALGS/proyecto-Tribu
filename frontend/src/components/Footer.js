@@ -1,12 +1,11 @@
-'use client'
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import logo from '../../public/images/logo.png';
 
 const Footer = () => {
   return (
-    <MDBFooter className='footer-custom text-center text-lg-start text-white'>
-      <MDBContainer fluid className='bg-green-700'>
+    <MDBFooter className='footer-custom text-center text-lg-start text-white' style={{ backgroundColor: '#030712' }}>
+      <MDBContainer fluid>
         <MDBRow>
           <MDBCol xs='12' md='6' lg='3' className='mb-4 p-4 order-lg-2'>
             <div>
@@ -46,10 +45,8 @@ const Footer = () => {
         </MDBRow>
       </MDBContainer>
 
-      <div className='text-center p-2 bg-green-700'>
+      <div className='text-center p-2' style={{ backgroundColor: '#030712' }}>
         © 2024 TRIBU, All rights reserved.
-        <a className='text-reset fw-bold' href='/home'>
-        </a>
       </div>
     </MDBFooter>
   );

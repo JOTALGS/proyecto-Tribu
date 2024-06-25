@@ -61,11 +61,11 @@ function Footer() {
           transition={{ duration: 0.8 }}
           className="d-flex justify-content-between flex-column flex-md-row flex-wrap gray-100 pt-3"
         >
-          <p>© 2023 ProHouse. All rights reserved</p>
+          <p>© 2024 TRIBU. All rights reserved</p>
           <p>
-            Design by{" "}
+            Design by{"Nicolás Valles"}
             <Link className="link-primary link-underline-opacity-0" to={""}>
-              Revend
+              Conect
             </Link>
           </p>
         </motion.div>
