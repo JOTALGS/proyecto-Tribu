@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 
 function Join() {
   return (
-    <div className="join">
+    <div className="join bg-black w-full">
       <Container className="mt-5">
         <motion.div
           initial={{ opacity: 0 }}
