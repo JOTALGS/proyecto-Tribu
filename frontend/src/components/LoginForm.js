@@ -59,7 +59,7 @@ const Login = () => {
       <VideoContainer>
         <Video src="/videos/tribu.mp4" type="video/mp4" autoPlay muted loop />
       </VideoContainer>
-      <div className="w-full max-w-md p-8 rounded-lg relative z-10">
+      <div className="w-full max-w-md rounded-lg mb-32 relative z-10">
         <Link href="/home">
           <img
             src="/images/logo.png"
@@ -92,8 +92,11 @@ const Login = () => {
             <div>
               <button
                 onClick={onButtonClick}
-                className="w-full px-4 py-2 font-bold text-white bg-rose-600 rounded-lg hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-700 focus:ring-offset-2"
-              >
+                className="w-full px-4 py-2 font-bold text-white rounded-lg 
+                bg-gray-900 transition-all duration-900 
+                hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800
+                focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                >
                 Welcome back
               </button>
             </div>

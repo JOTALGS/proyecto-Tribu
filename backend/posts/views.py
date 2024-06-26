@@ -45,7 +45,7 @@ def get_posts(request):
     friends_users = [friends.user for friends in friends]
 
     # Get posts by the user and their friends
-    posts = Post.objects.filter(created_by__in=[user] + friends_users)
+    posts = Post.objects.filter(created_by__in=[user] + friends_users).order_by('-created_at')
 
     serialized_posts = PostSerializer(posts, many=True).data
     return JsonResponse({'posts': serialized_posts}, safe=False)

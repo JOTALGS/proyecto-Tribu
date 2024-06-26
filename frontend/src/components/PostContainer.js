@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Post from './Posts';
 import api from '@/utils/api';
+import PostInput from '@/components/CreatePost';
 
 const PostContainer = () => {
   const [allPosts, setPosts] = useState([]);
@@ -11,6 +12,17 @@ const PostContainer = () => {
       const response = await api.get(`api/posts/`);
       setPosts(response.data.posts);
       console.log('posts', response.data.posts);
+    } catch (error) {
+      console.error(error.response ? error.response.data : error.message);
+    }
+  };
+
+  const handleChildData = async (data) => {
+    console.log('Data from child:', data);
+
+    try {
+      const response = await api.post('api/create/', data); // Use the latest form data
+      console.log('response', response.data);
     } catch (error) {
       console.error(error.response ? error.response.data : error.message);
     }
@@ -39,7 +51,8 @@ const PostContainer = () => {
   }, []);
 
   return (
-    <div className="overflow-y-auto mx-auto mt-2 px-4 hide-scrollbar post-container" style={{ height: '65vh', width: '50vw' }}>
+    <div className="overflow-y-auto mx-auto mt-2 px-4 hide-scrollbar post-container" style={{ height: '100vh', width: '50vw' }}>
+      <PostInput onSubmit={handleChildData} />
       {allPosts.map(post => (
         <Post 
           key={post.id}

@@ -1,3 +1,4 @@
+'use client'
 import gsap from "gsap";
 import React from "react";
 import { useLayoutEffect } from "react";
@@ -117,7 +118,7 @@ const DesignSection = () => {
       </TextContainer>
 
       <TextContainer2 ref={textTwo}>
-        <span>Flat-edge design with toughest smartphone glass.</span>
+        <span>Minimalist design for embrace user experience.</span>
       </TextContainer2>
     </Section>
   );

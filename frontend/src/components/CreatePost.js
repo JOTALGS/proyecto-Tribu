@@ -49,8 +49,8 @@ const PostInput = ({ onSubmit }) => {
     <div
       className="bg-white border border-gray-300 rounded-lg mx-auto mt-2"
       style={{
-        maxWidth: '90vw',
-        width: '50vw',
+        maxWidth: '80vw',
+        width: '45vw',
         boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
         fontFamily: 'Poppins, Open Sans, sans-serif',
       }}

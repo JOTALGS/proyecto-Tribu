@@ -1,3 +1,4 @@
+'use client'
 import AnimationTitles from "@/components/functions/AnimationTitles";
 import React from "react";
 import styled, { keyframes } from "styled-components";

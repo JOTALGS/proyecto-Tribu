@@ -32,12 +32,17 @@ const Navbar = () => {
   };
 
   const buttonStyle = {
-    backgroundColor: buttonHovered ? '#cc3c6d' : 'transparent',
+    backgroundImage: buttonHovered
+      ? 'linear-gradient(to left, #5f005f, #920092, #ff4da6)'
+      : 'linear-gradient(to right, #030712, #030712, #030712)',
     borderColor: '#cc3c6d',
     borderRadius: '5px',
     padding: '0.5em 1em',
-    transition: 'background-color 0.3s ease, border-color 0.3s ease',
-    color: buttonHovered ? '#fff' : '#e75480',
+    transition: 'background-image 0.8s ease, border-color 0.8s ease',
+    color: '#e75480',
+    position: 'relative',
+    zIndex: '1',
+    cursor: 'pointer', // Optional: add cursor pointer on hover
   };
 
   return (
@@ -58,8 +63,8 @@ const Navbar = () => {
               variant="outline-success text-white"
               style={buttonStyle}
               onClick={handleLogout}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = '#a73356')}
-              onMouseLeave={(e) => (e.target.style.backgroundColor = '#cc3c6d')}
+              onMouseEnter={handleButtonMouseEnter}
+              onMouseLeave={handleButtonMouseLeave}
             >
               Log out
             </Button>
