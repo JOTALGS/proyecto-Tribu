@@ -103,12 +103,12 @@ const Quote = () => {
       <TextContainer>
         <Text delay="0s">
           {" "}
-          <span>&#8220;TRIBU - A platform for music artists to connect</span>{" "}
+          <span>&#8220;TRIBU - A platform for music artists to connect,</span>{" "}
         </Text>
         <Text delay="0.4s">
           {" "}
           <span>
-            &nbsp;&nbsp;&nbsp;, collaborate, and showcase their work. &#8221;
+            &nbsp;&nbsp;&nbsp;collaborate, and showcase their work. &#8221;
           </span>{" "}
         </Text>
         {/*
