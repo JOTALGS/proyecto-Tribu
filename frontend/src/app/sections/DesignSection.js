@@ -113,11 +113,11 @@ const DesignSection = () => {
   return (
     <Section ref={container}>
       <TextContainer ref={textOne}>
-        <span>Flaw-less design with strong durability.</span>
+        <span>Our aim</span>
       </TextContainer>
 
       <TextContainer2 ref={textTwo}>
-        <span>Flat-edge design with toughest smartphone glass.</span>
+        <span>Connect producers and musicians</span>
       </TextContainer2>
     </Section>
   );
