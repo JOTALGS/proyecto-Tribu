@@ -156,17 +156,17 @@ const DisplaySection = () => {
   return (
     <Section>
       <MainTitle>
-        Immersive <br /> Display
+        Proyect <br /> Inspiration
       </MainTitle>
       <TextBlockRight>
-        <Title>Super Ratine XDR Display</Title>
+        <Title>Our Aim</Title>
         <Text>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           Necessitatibus dignissimos ipsam.
         </Text>
       </TextBlockRight>
       <TextBlockLeft ref={container}>
-        <Title>Big is better</Title>
+        <Title>About Us</Title>
         <Text>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           Necessitatibus dignissimos ipsam.
@@ -174,8 +174,8 @@ const DisplaySection = () => {
       </TextBlockLeft>
 
       <TextContainer>
-        <MovingText ref={textOne}>Tougher then ever!</MovingText>
-        <MovingText ref={textTwo}>Every touch matters.</MovingText>
+        <MovingText ref={textOne}>Find who you are missing</MovingText>
+        <MovingText ref={textTwo}>For your next piece!</MovingText>
       </TextContainer>
     </Section>
   );

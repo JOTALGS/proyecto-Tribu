@@ -314,14 +314,14 @@ function Properties() {
             </SwiperSlide>
             <SwiperSlide>
               {" "}
-              <Card className="bg-black-100 rounded">
+              <Card classNam  variant="top"
+                      alt="img"
+                      src="https://via.placeholder.com/150"
+          e="bg-black-100 rounded">
                 <Card.Body className="p-2">
                   <div className="rounded overflow-hidden position-relative">
                     <Card.Img
-                      variant="top"
-                      alt="img"
-                      src="https://via.placeholder.com/150"
-                      //src={require("../images/properties/pexels-rachel-claire-8112843 1.webp")}
+                                //src={require("../images/properties/pexels-rachel-claire-8112843 1.webp")}
                     />
                     <i className="fa-regular fa-heart like" onClick={like}></i>
                   </div>

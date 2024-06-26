@@ -27,6 +27,7 @@ export default function Home() {
         <DisplaySection />
         <ProcessSection />
         <Join />
+        <Footer /> 
 
         
         

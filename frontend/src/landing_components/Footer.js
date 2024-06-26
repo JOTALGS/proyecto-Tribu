@@ -66,7 +66,7 @@ function Footer() {
           <p>© 2024 TRIBU. All rights reserved</p>
           <p>
             Design by{"Nicolás Valles"}
-            <Link className="link-primary link-underline-opacity-0" to={""}>
+            <Link className="link-primary link-underline-opacity-0" href="/register">
               Conect
             </Link>
           </p>

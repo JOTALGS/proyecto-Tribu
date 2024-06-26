@@ -1,3 +1,4 @@
+import AnimationTitles from "@/components/functions/AnimationTitles";
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
@@ -120,6 +121,8 @@ const ProcessSection = () => {
         <img src="{a15}" alt="A15 processor" />
       </Processor>
       <Text>
+        <h1 className="mx-auto">Features</h1>
+
         <span>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           Reprehenderit numquam quae nisi, dolore cum voluptatem cumque quo sit,
