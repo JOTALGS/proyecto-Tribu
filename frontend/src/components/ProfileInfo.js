@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MDBCardImage } from 'mdb-react-ui-kit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLink } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -8,30 +7,20 @@ const BASE_URL = 'http://localhost:8000'; // Define the base URL
 
 function Contacto({ user }) {
   return (
-    <div style={{ 
-      width: '100%', 
-      height: '100%', 
-      padding: '20px', 
-      display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'flex-start', 
-      alignItems: 'flex-start',
-      borderRadius: '8px', 
-      boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' 
-    }}>
-      <h3 style={{ margin: '0' }}>Contact</h3>
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', marginTop: '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-          <FontAwesomeIcon icon={faWhatsapp} style={{ marginRight: '10px' }} />
+    <div className="p-5 bg-white rounded-lg shadow-md" style={{ width: '100%', height: '100%' }}>
+      <h3 className="text-lg font-bold mb-4">Contact</h3>
+      <div className="space-y-4">
+        <div className="flex items-center">
+          <FontAwesomeIcon icon={faWhatsapp} className="mr-2 text-green-600" />
           <span>+59891972654</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-          <FontAwesomeIcon icon={faEnvelope} style={{ marginRight: '10px' }} />
+        <div className="flex items-center">
+          <FontAwesomeIcon icon={faEnvelope} className="mr-2 text-red-600" />
           <span>{user.email}</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <FontAwesomeIcon icon={faLink} style={{ marginRight: '10px' }} />
-          <span><a href={user.links}>{user.links}</a></span>
+        <div className="flex items-center">
+          <FontAwesomeIcon icon={faLink} className="mr-2 text-blue-600" />
+          <span><a href={user.links} className="text-blue-600">{user.links}</a></span>
         </div>
       </div>
     </div>
@@ -40,7 +29,6 @@ function Contacto({ user }) {
 
 export default function ProfilePage({ tabData, user }) {
   const [selectedButton, setSelectedButton] = useState('profile');
-  const [selectedButton2, setSelectedButton2] = useState(null);
   const [showMyWorkContent, setShowMyWorkContent] = useState(false);
 
   const handleButtonClick = (buttonName) => {
@@ -52,10 +40,6 @@ export default function ProfilePage({ tabData, user }) {
     }
   };
 
-  const handleButtonClick2 = (buttonName) => {
-    setSelectedButton2(buttonName);
-  };
-
   const handleMyWorkButtonClick = () => {
     setShowMyWorkContent(true);
   };
@@ -63,40 +47,34 @@ export default function ProfilePage({ tabData, user }) {
   return (
     <section className="bg-white py-3">
       <div className="w-full">
-        <div className="mx-auto flex items-center border rounded-lg" style={{ width: '70vw', height: '28vh' }}>
+        <div className="mx-auto flex items-center border rounded-lg shadow-md" style={{ width: '70vw', height: '28vh' }}>
           <div className="border mr-1 rounded-lg" style={{ width: '45vw', height: '100%' }}>
-            <div className="m-4" style={{ display: 'flex' }}>
-            <div style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                flex: 1,
-                width: '150px', // Set a fixed width for the image container
-                height: '150px' // Set a fixed height for the image container
-              }}>
-              <img
-                src={`${BASE_URL}${user.image}`} // Use the base URL here
-                alt=''
-                style={{ width: '150px', height: '150px' }}
-                className='rounded-circle'
-              />
+            <div className="m-4 flex">
+              <div className="flex flex-col items-center justify-center" style={{ width: '150px', height: '150px' }}>
+                <img
+                  src={`${BASE_URL}${user.image}`} // Use the base URL here
+                  alt=''
+                  className='rounded-circle'
+                  style={{ width: '150px', height: '150px' }}
+                />
               </div>
-              <div style={{ flex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem' }}>
-                <p>{user.username}</p>
+              <div className="flex-1 flex flex-col justify-center p-4">
+                <p className="text-xl font-bold">{user.username}</p>
                 <p className="text-gray-500 mb-1">{user.choice}</p>
                 <p className="text-gray-500 mb-4">{user.city}</p>
               </div>
             </div>
             <div className="ml-36 my-2" style={{ width: '45vw' }}>
               <button
-                className={`mx-1 p-2 rounded ${selectedButton === 'profile' ? 'bg-green-500 text-white' : 'bg-black text-white'} hover:bg-green-600 transition-colors duration-300`}
+                className={`mx-1 p-2 rounded-lg ${selectedButton === 'profile' ? 'bg-gradient-to-r from-pink-500 via-pink-900 to-purple-800 text-white' : 'bg-gray-900 text-white'} 
+                  hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800 transition-all duration-300`}
                 onClick={() => handleButtonClick('profile')}
               >
                 Profile
               </button>
               <button
-                className={`mx-1 p-2 rounded ${selectedButton === 'posts' ? 'bg-green-500 text-white' : 'bg-black text-white'} hover:bg-green-600 transition-colors duration-300`}
+                className={`mx-1 p-2 rounded-lg ${selectedButton === 'posts' ? 'bg-gradient-to-r from-pink-500 via-pink-900 to-purple-800 text-white' : 'bg-gray-900 text-white'} 
+                  hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800 transition-all duration-300`}
                 onClick={() => {
                   handleButtonClick('posts');
                   handleMyWorkButtonClick();

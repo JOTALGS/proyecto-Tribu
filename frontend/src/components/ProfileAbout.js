@@ -24,7 +24,7 @@ export default function ProfileAbout({ bio }) {
           className="mx-auto px-8 py-6 bg-white border text-black rounded-lg"
           style={{ 
             maxWidth: '70vw',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'  // Agregando sombra aquí
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'  // Sombra similar
           }}
         >
           <h2 className="font-bold text-lg">About</h2>
@@ -40,7 +40,10 @@ export default function ProfileAbout({ bio }) {
           </div>
           <button 
             onClick={handleToggle} 
-            className="font-bold mt-4 p-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300"
+            className="w-full px-4 py-2 font-bold text-white rounded-lg 
+            bg-gray-900 transition-all duration-900 
+            hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800
+            focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
           >
             {isExpanded ? 'See less' : 'See more'}
           </button>
@@ -49,4 +52,3 @@ export default function ProfileAbout({ bio }) {
     </section>
   );
 }
- 

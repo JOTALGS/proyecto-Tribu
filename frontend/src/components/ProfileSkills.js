@@ -39,7 +39,10 @@ class ProfileSkills extends React.Component {
               </div>
               <button
                 onClick={this.handleToggle}
-                className="font-bold mt-4 p-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-300"
+                className="w-full px-4 py-2 font-bold text-white rounded-lg 
+                bg-gray-900 transition-all duration-900 
+                hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800
+                focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
               >
                 {isExpanded ? 'See less' : 'See more'}
               </button>
