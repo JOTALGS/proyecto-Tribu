@@ -100,7 +100,7 @@ const HeroSection = () => {
       <VideoContainer>
         <video src="/videos/Ink-21536.mp4" type="video/mp4" autoPlay muted loop />
       </VideoContainer>
-      <Title>Connect</Title>
+      <Title>C0N3C7</Title>
       <TextContainer>
         <span>Musicians</span>
         <span>Producers</span>

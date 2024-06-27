@@ -1,45 +1,58 @@
 'use client'
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import React from "react";
-import { useRef } from "react";
-import { useLayoutEffect } from "react";
+import React, { useRef } from "react";
 import styled, { keyframes } from "styled-components";
+import Image from "next/image";
 
 const Section = styled.section`
   width: 100vw;
   height: 100vh;
   position: relative;
+  overflow: hidden;
+  background-color: #000;
+`;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const VideoContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65vw;
+  height: 98vh;
+  z-index: -1;
+`;
+
+const Video = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const TextContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-
+  position: absolute;
+  top: 65%;
+  left: 5%;
+  width: 65%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: var(--dark);
-  color: var(--white);
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--fontlg);
 `;
+
 const moveUp = keyframes`
-100%{
+  100% {
     transform: translateY(0);
-}
+  }
 `;
 
 const Text = styled.p`
-  width: 50%;
-  font-size: var(--fontlg);
-  position: relative;
-  height: var(--fontmd);
+  width: 100%;
+  height: var(--fontxl);
   overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
 
   span {
     position: absolute;
@@ -49,46 +62,40 @@ const Text = styled.p`
     animation-timing-function: ease;
     animation-fill-mode: forwards;
     animation-delay: ${(props) => props.delay};
-    font-family: var(--fontL);
-    background-image: linear-gradient(-45deg, var(--gradient));
+    background-image: linear-gradient(-55deg, var(--gradient));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  .author {
-    width: 100%;
-    text-align: end;
-    background-image: linear-gradient(-180deg, var(--gradient));
-    font-family: var(--fontR);
-  }
-
-  @media screen and (max-width: 70em) {
-    width: 70%;
+    font-size: 2em;
   }
 
   @media screen and (max-width: 48em) {
     font-size: var(--fontmd);
     height: var(--fontsm);
   }
-  @media screen and (max-width: 40em) {
-    width: 90%;
-  }
   @media screen and (max-width: 30em) {
     font-size: var(--fontxs);
   }
 `;
 
+const LogoContainer = styled.div`
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 15%; /* Sube la posición del logo para dar espacio al texto */
+  left: 5%;
+`;
+
 const Quote = () => {
-  gsap.registerPlugin(ScrollTrigger);
   const sectionRef = useRef(null);
 
-  useLayoutEffect(() => {
-    let Elem = sectionRef.current;
+  React.useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const Elem = sectionRef.current;
 
-    let trigger = ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
       trigger: Elem,
-      start: "top top",
+      start: 'top top',
       pin: true,
       pinSpacing: false,
     });
@@ -100,32 +107,15 @@ const Quote = () => {
 
   return (
     <Section ref={sectionRef}>
+      <VideoContainer>
+        <Video src="/videos/tribu.mp4" type="video/mp4" autoPlay muted loop />
+      </VideoContainer>
+      <LogoContainer>
+        <Image src="/images/logo.png" alt="Logo" layout="fill" objectFit="contain" />
+      </LogoContainer>
       <TextContainer>
         <Text delay="0s">
-          {" "}
-          <span>&#8220;TRIBU - A platform for music artists to connect,</span>{" "}
-        </Text>
-        <Text delay="0.4s">
-          {" "}
-          <span>
-            &nbsp;&nbsp;&nbsp;collaborate, and showcase their work. &#8221;
-          </span>{" "}
-        </Text>
-        {/*
-        <Text delay="0.8s">
-          {" "}
-          <span>&nbsp;&nbsp;&nbsp;so you have to trust that the dots</span>{" "}
-        </Text>
-        <Text delay="1.2s">
-          {" "}
-          <span>
-            &nbsp;&nbsp;&nbsp;will somehow connect in your future. &#8221;
-          </span>{" "}
-        </Text>
-         */}
-        <Text delay="1.6s">
-          {" "}
-          <span className="author">&#x23AF; TRIBU</span>{" "}
+          <span>FIND YOUR NEXT COLLABORATION</span>
         </Text>
       </TextContainer>
     </Section>

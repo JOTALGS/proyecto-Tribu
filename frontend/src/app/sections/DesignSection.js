@@ -20,7 +20,7 @@ const Section = styled.section`
 `;
 const TextContainer = styled.p`
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   z-index: 1;
 
   display: flex;
@@ -114,11 +114,11 @@ const DesignSection = () => {
   return (
     <Section ref={container}>
       <TextContainer ref={textOne}>
-        <span>Collaborations with peers from the world of music.</span>
+        <span>Showcase your collaborations with the industry.</span>
       </TextContainer>
 
       <TextContainer2 ref={textTwo}>
-        <span>Minimalist design for embrace user experience.</span>
+        <span>Minimalist design for embracing user experience.</span>
       </TextContainer2>
     </Section>
   );

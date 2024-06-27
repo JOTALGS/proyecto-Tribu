@@ -1,78 +1,54 @@
-'use client'
-import { Container } from "react-bootstrap";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import React from "react";
+import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import logo from "../../public/images/logo.png";
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer className="w-full">
-      <Container>
-        <div className="d-flex justify-content-between flex-column flex-md-row flex-wrap pt-5 pb-4">
-          <motion.div
-            initial={{ x: -200 }}
-            whileInView={{ x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src={logo.src}
-              //src={require("../images/logo/logo.png")}
-              alt="logo"
-              className="mb-3"
-            />
-            <p className="gray-100">
-              Please contact us if you have any specific <br /> idea or request.
-            </p>
-            <Link className="link-primary link-underline-opacity-0" href="#">
-              info@revend.group
-            </Link>
-          </motion.div>
-          <span className="d-block d-md-none"></span>
-          <motion.div
-            initial={{ x: 200 }}
-            whileInView={{ x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="d-flex"
-          >
-            <div className="me-5">
-              <h6 className="gray-100 text-uppercase mb-2 fw-normal">
-                Company
-              </h6>
-              <ul className="p-0">
-                <li>How it works</li>
-                <li>Market</li>
-                <li>About Us</li>
-              </ul>
-            </div>
+    <MDBFooter className='text-white' style={{ backgroundColor: '#030712' }}>
+      <MDBContainer fluid>
+        <MDBRow>
+          <MDBCol xs='12' md='6' lg='3' className='mb-4 p-4 order-lg-2'>
             <div>
-              <h6 className="gray-100 text-uppercase mb-2 fw-normal">
-                Socials
-              </h6>
-              <ul className="p-0">
-                <li>Twitter</li>
-                <li>Instagram</li>
-                <li>Facebook</li>
+              <h6 className='text-uppercase fw-bold'>About tribu</h6>
+              <ul className='list-unstyled mb-0'>
+                <li><a href='#!' className='text-reset'>Musicians</a></li>
+                <li><a href='#!' className='text-reset'>Producers</a></li>
+                <li><a href='#!' className='text-reset'>Connect</a></li>
               </ul>
             </div>
-          </motion.div>
-        </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="d-flex justify-content-between flex-column flex-md-row flex-wrap gray-100 pt-3"
-        >
-          <p>© 2024 TRIBU. All rights reserved</p>
-          <p>© 2024 TRIBU. All rights reserved</p>
-          <p>
-            Design by{"Nicolás Valles"}
-            <Link className="link-primary link-underline-opacity-0" href="/register">
-              Conect
-            </Link>
-          </p>
-        </motion.div>
-      </Container>
-    </footer>
+          </MDBCol>
+
+          <MDBCol xs='12' md='6' lg='3' className='mb-4 p-4 order-lg-3'>
+            <div>
+              <h6 className='text-uppercase fw-bold'>Our platform</h6>
+              <ul className='list-unstyled mb-0'>
+                <li><a href='home' className='text-reset'>Home</a></li>
+                <li><a href='settings' className='text-reset'>Settings</a></li>
+                <li><a href='Profile' className='text-reset'>Profile</a></li>
+              </ul>
+            </div>
+          </MDBCol>
+
+          <MDBCol xs='12' md='6' lg='3' className='mb-4 p-4 order-lg-4'>
+            <div>
+              <h6 className='text-uppercase fw-bold'>Contact with our team</h6>
+              <ul className='list-unstyled mb-0'>
+                <li><a href='mailto:tribu@gmail.com' className='text-reset'><MDBIcon color='secondary' icon='envelope' className='me-2' />tribu.co.uy@gmail.com</a></li>
+                <li><MDBIcon color='secondary' icon='home' className='me-2' />MONTEVIDEO, UY 11200</li>
+              </ul>
+            </div>
+          </MDBCol>
+
+          <MDBCol xs='12' md='6' lg='3' className='mb-4 order-lg-1 d-flex justify-content-lg-start align-items-lg-end'>
+            <img width={230} height={70} src={logo.src} alt="Tribu logo" style={{ width: '70vw' }} />
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+
+      <div className='text-center p-2' style={{ backgroundColor: '#030712' }}>
+        © 2024 TRIBU, All rights reserved.
+      </div>
+    </MDBFooter>
   );
 }
 

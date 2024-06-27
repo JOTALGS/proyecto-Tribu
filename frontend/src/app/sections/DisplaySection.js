@@ -1,5 +1,4 @@
 'use client'
-/* eslint-disable react-hooks/exhaustive-deps */
 import gsap from "gsap";
 import React from "react";
 import { useLayoutEffect } from "react";
@@ -16,7 +15,7 @@ const Section = styled.section`
   flex-direction: column;
 
   background-color: var(--dark);
-  color: var(--white);
+  color: #ffffff; /* Changed text color to white */
 
   & > *:nth-child(even) {
     align-self: flex-end;
@@ -29,6 +28,7 @@ const Section = styled.section`
   }
   & > *:nth-child(odd) {
     margin-left: 4rem;
+    text-align: justify;
 
     @media screen and (max-width: 48em) {
       margin-left: 1rem;
@@ -36,10 +36,10 @@ const Section = styled.section`
   }
 `;
 const MainTitle = styled.h1`
-  font-size: var(--fontBig);
+  font-size: var(--fontxxl); /* Increased font size */
   font-family: var(--fontL);
 
-  background-image: linear-gradient(-45deg, var(--gradient));
+  background-image: linear-gradient(-35deg, var(--gradient));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -62,13 +62,23 @@ const TextBlockRight = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 50%;
+  width: 90%;
+  margin-bottom: 1rem; /* Reduced margin bottom */
+
+  @media screen and (max-width: 48em) {
+    width: 95%;
+  }
 `;
 const TextBlockLeft = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 50%;
+  margin-bottom: 1rem; /* Reduced margin bottom */
+
+  @media screen and (max-width: 48em) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -81,17 +91,18 @@ const Title = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: var(--fontxs);
-  color: var(--greyLight);
+  font-size: var(--fontlg); /* Adjusted font size */
+  color: #ffffff; /* Changed text color to white */
   margin-bottom: 0.5rem;
   width: 55%;
+  text-align: justify;
 
   @media screen and (max-width: 64em) {
     width: 70%;
   }
   @media screen and (max-width: 48em) {
     width: 100%;
-    font-size: var(--fontxxs);
+    font-size: var(--fontxl);
   }
 `;
 const TextContainer = styled.div`
@@ -106,7 +117,7 @@ const TextContainer = styled.div`
 `;
 
 const MovingText = styled.h1`
-  font-size: var(--fontBig);
+  font-size: var(--fontxxxl); /* Increased font size */
   font-family: var(--fontL);
 
   background-image: linear-gradient(-45deg, var(--gradient));
@@ -157,20 +168,17 @@ const DisplaySection = () => {
   return (
     <Section>
       <MainTitle>
-        Proyect <br /> Inspiration
+        Aim &<br /> Inspiration
       </MainTitle>
       <TextBlockRight>
-        <Title>Our Aim</Title>
         <Text>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Necessitatibus dignissimos ipsam.
+          At Tribu, we aim to bridge the gap between music producers and artists. We know that finding the right collaboration can be challenging, and we are here to simplify that process. Our platform is designed to foster connections, encourage growth, and inspire creativity. Join us at Tribu and be a part of a community that is passionate about music, collaboration, and local talent. Together, we can create something extraordinary.
         </Text>
       </TextBlockRight>
       <TextBlockLeft ref={container}>
-        <Title>About Us</Title>
+        <Title>TRIBU</Title>
         <Text>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Necessitatibus dignissimos ipsam.
+          Tribu is a tool directed to workers in the music industry with a special emphasis on promoting productivity. We aim to boost your productivity.
         </Text>
       </TextBlockLeft>
 
