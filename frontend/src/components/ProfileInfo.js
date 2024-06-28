@@ -11,12 +11,8 @@ function Contacto({ user }) {
       <h3 className="text-lg font-bold mb-4">Contact</h3>
       <div className="space-y-4">
         <div className="flex items-center">
-          <FontAwesomeIcon icon={faWhatsapp} className="mr-2 text-green-600" />
-          <span>+59891972654</span>
-        </div>
-        <div className="flex items-center">
           <FontAwesomeIcon icon={faEnvelope} className="mr-2 text-red-600" />
-          <span>{user.email}</span>
+          <span>frankieproducer@gmail.com</span>
         </div>
         <div className="flex items-center">
           <FontAwesomeIcon icon={faLink} className="mr-2 text-blue-600" />

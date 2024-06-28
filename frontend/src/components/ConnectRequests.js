@@ -1,6 +1,6 @@
 import api from '@/utils/api';
 import Link from 'next/link';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 
 export default function ConnectRequests({ paramsUserId }) {
@@ -31,6 +31,13 @@ export default function ConnectRequests({ paramsUserId }) {
     }
   };
 
+  const hardcodedUsers = [
+    { name: 'Ana', role: 'Musician', category: '', image: 'https://media.wonderlandmagazine.com/uploads/2021/08/VennaPress01Lucero-1.jpg' },
+    { name: 'Jose Hernandez', role: 'Musician', category: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv-RV88iLqLB-GFPiW787_bPUHqoR-hAIieQ&s' },
+    { name: 'Patricia Ruiz', role: 'Musician', category: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZKr0HZ_xpGR7L8O1c4lfFZHXeTsWKG9kYQw&s' },
+    { name: 'María García', role: 'Musician', category: '', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLwmoMU1r0TrId0oywLGQbarxcxb4_FlEQ4A&s' }
+  ];
+
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto">
@@ -50,20 +57,18 @@ export default function ConnectRequests({ paramsUserId }) {
               </tr>
             </thead>
             <tbody>
-              {userData.map((user, index) => (
+              {hardcodedUsers.map((user, index) => (
                 <tr key={index}>
                   <td className="align-middle">
                     <div className='d-flex align-items-center'>
                       <img
-                        src='https://via.placeholder.com/200x100'
-                        alt=''
+                        src={user.image}
+                        alt={user.name}
                         style={{ width: '45px', height: '45px' }}
                         className='rounded-circle'
                       />
                       <div className='ms-3'>
-                        <Link href={`/profile/${user.sender_id}`} key={index} passHref>
-                          <p className='fw-bold mb-1'>{user.sender_name}</p>
-                        </Link>
+                        <p className='fw-bold mb-1'>{user.name}</p>
                       </div>
                     </div>
                   </td>
@@ -72,7 +77,17 @@ export default function ConnectRequests({ paramsUserId }) {
                     <p className='text-muted mb-0'>{user.category}</p>
                   </td>
                   <td>
-                    <Button variant="outline-success" className="bg-green-500" onClick={() => handleFriendshipRequest(user.sender_id)}>
+                    <Button 
+                      onClick={() => handleFriendshipRequest(user.name)}
+                      className="font-bold text-white rounded-lg 
+                        bg-gray-900 transition-all duration-900 
+                        hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800
+                        focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                      style={{
+                        backgroundColor: '#1a202c',  // Dark blue color
+                        padding: '0.375rem 0.75rem',  // Original size
+                      }}
+                    >
                       Connect
                     </Button>
                   </td>

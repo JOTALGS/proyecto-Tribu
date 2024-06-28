@@ -90,7 +90,7 @@ const EditProfile = () => {
               />
             </div>
           ))}
-          <button type="button" onClick={handleAddLink} className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600">Add More</button>
+          <button type="button" onClick={handleAddLink} className="py-2 px-4 bg-gray-900 text-white rounded-md hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800">Add More</button>
         </div>
 
         <div className="field mb-4">
@@ -103,14 +103,14 @@ const EditProfile = () => {
           <div className="role-buttons flex space-x-4">
             <button
               type="button"
-              className={`role-button py-2 px-4 rounded-md ${role === 'producer' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+              className={`role-button py-2 px-4 rounded-md ${role === 'producer' ? 'bg-gray-900 text-white' : 'bg-gray-200'}`}
               onClick={() => handleRoleChange('producer')}
             >
               Producer
             </button>
             <button
               type="button"
-              className={`role-button py-2 px-4 rounded-md ${role === 'musician' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+              className={`role-button py-2 px-4 rounded-md ${role === 'musician' ? 'bg-gray-900 text-white' : 'bg-gray-200'}`}
               onClick={() => handleRoleChange('musician')}
             >
               Musician
@@ -123,7 +123,7 @@ const EditProfile = () => {
           <textarea value={bio} onChange={(e) => setBio(e.target.value)} className="shadow-md rounded-md w-full p-2 border border-gray-300" />
         </div>
 
-        <Button type="submit" className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600">Save</Button>
+        <Button type="submit" className="py-2 px-4 bg-gray-900 text-white rounded-md hover:bg-gradient-to-r hover:from-pink-500 hover:via-pink-900 hover:to-purple-800">Save</Button>
       </Form>
     </div>
   );
